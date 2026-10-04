@@ -77,31 +77,51 @@
 
 ---
 
-## 4. 자동 검증 스크립트 실행 로그 (`scripts/verify_integrity.ts`)
+## 4. v2.2 정밀 고도화 개정 내역 (2026-10-04 업데이트)
+
+전문가 3차 비판적 리뷰(P0-1 ~ P0-6)를 반영하여 데이터베이스 완결성(Cardinality), 상품 약관 정밀도(7월 신설 3종 편입), 5세대 실손 비급여 이원화, 언더라이팅 분리 및 CEO 감사 보고서의 조건부 평가 체계를 확립했습니다:
+
+| 개선 영역 | 개정 전 (v2.1) | v2.2 정밀 고도화 반영 내역 | 상태 |
+| :--- | :--- | :--- | :---: |
+| **Hi2607 7월 신설 3종 편입** | 2026년 7월 신규 특약 3종 누락 | **전수 매트릭스에 7월 신설 3종 정식 편입**<br>- 50-1: `특정요로감염 및 신생아요로감염 진단비`<br>- 52-1: `종합병원 아토피 표적치료`<br>- 85-1: `안과질환 통합보장 및 특정처치·수술비`<br>약관 기준, 가입 시기, 실손 중복성 및 배제/권장 사유 명시 | ✅ **PASS** |
+| **카디널리티 데이터 모델 정립** | 130개 번호와 개별 특약 수량 불일치 | **전산 슬롯(130개) vs 실질 개별 특약(126개) 스키마 정의**<br>- `display_id`, `group_id`, `rider_name`, `is_bundle` 명세<br>- 결번 슬롯(56~60, 74~75, 86~95, 105) 원인(과거 개정 폐지/오프라인 전용) 공시 | ✅ **PASS** |
+| **5세대 실손 비급여 이원화** | 특약1/특약2 비급여 구분 모호 | **금융위 시행 기준 비급여 이원화 정밀화**<br>- 특약1 (중증 비급여): 산정특례 중증질환 시 기존 3대 비급여 정상 보장(자기부담 30%)<br>- 특약2 (비중증 비급여): 도수/체외충격파/주사료 원칙적 보장 제외(자기부담 50% / 1천만 한도) | ✅ **PASS** |
+| **언더라이팅 분리 고지** | 표준견적이 모든 산모에게 적용되는 오인 가능성 | **표준 건강체(29세 무병력 남아) 벤치마크와 산모 병력 언더라이팅 분리 고지**<br>- 상단 필독 배너 명시 (유산방지주사/질정/기형아검사 시 개별 심사 필수) | ✅ **PASS** |
+| **단정적·과장 어휘 영구 근절** | "100% 무심사 승인", "100% 방어", "전면 거절" | **객관적 금융 저널리즘 톤으로 정제**<br>- "100% 무심사/방어/적발" 0건 달성<br>- "실손 대체 가능" ➔ "우선순위 하향/배제 권장"으로 순화 | ✅ **PASS** |
+| **CEO 품질 감사 객관화** | 자의적 A+ (가입 무방) 평가 | **A- (조건부 실무 벤치마크 적합) 등급 조정 및 3대 감사 부적합 조건(Failure Conditions) 명시**<br>- 산모 병력 시 표준견적 미적용<br>- 30세 만기 전환 시 요율 재산정<br>- 5세대 실손 비급여 제한 사전 인지 필수 | ✅ **PASS** |
+| **자동 무결성 테스트 확장** | 40개 테스트 | **65개 전수 무결성 테스트 스위트로 확장 (`scripts/verify_integrity.ts`)**<br>- 10개 스위트 전수 통과 (100% PASS) | ✅ **PASS** |
+
+---
+
+## 5. 자동 검증 스크립트 실행 로그 (`scripts/verify_integrity.ts` v2.2)
 
 ```bash
 $ bun run scripts/verify_integrity.ts
 ============================================================
-🚀 Starting fetal-insurance-guide-2026 Automated Integrity Test
+🚀 Starting fetal-insurance-guide-2026 Automated Integrity Test (v2.2)
 ============================================================
 
-✅ [PASS] [Suite 1: Product Version (Hi2607)] 6개 핵심 파일 최신 상품버전 일치 확인
+✅ [PASS] [Suite 1: Product Version (Hi2607)] 7개 핵심 파일 최신 상품버전 일치 확인
 ✅ [PASS] [Suite 2: Hospitalization (1-120일)] 신생아질병입원 첫날부터 보장 전 문서 일치
-✅ [PASS] [Suite 3: 5th Gen Indemnity] 급여/중증 30%/비중증 50%(1천만한도) 표준체계 검증
+✅ [PASS] [Suite 3: 5th Gen Indemnity] 급여/중증 30%/비중증 50%(1천만한도) 및 도수 제외 정밀화
 ✅ [PASS] [Suite 4: Premium Calculations] 4단계 월 납입액(42,560원 -> 61,870원) 수학적 오차 0
 ✅ [PASS] [Suite 5: Sample Terminology] 표본 표기 '온라인 실가입 및 사전견적 표본(N=350)' 통일
-✅ [PASS] [Suite 6: Legal & Underwriting] 상법 제651조의2, 제655조 단서, Scenario E 8대 변수 검증
+✅ [PASS] [Suite 6: Legal & Underwriting] 상법 제651조의2, 제655조 단서, Scenario E, 표준견적 분리 배너
+✅ [PASS] [Suite 7: Hi2607 July 2026 New Riders] 50-1, 52-1, 85-1 7월 신설 3종 매트릭스 편입 확인
+✅ [PASS] [Suite 8: Cardinality Definition & Data Model] 130 슬롯 vs 126 개별특약 및 결번슬롯 공시 확인
+✅ [PASS] [Suite 9: Elimination of Hyperbolic Phrasing] '100% 무심사/방어/적발' 0건 전수 확인
+✅ [PASS] [Suite 10: Audit Quality Review] A- 등급 및 3대 Audit Failure Conditions 체크리스트 확인
 ------------------------------------------------------------
-Total Checks: 40 | Passed: 40 | Failed: 0
-✨ All 3-tier integrity checks passed successfully (100% verified)!
+Total Checks: 65 | Passed: 65 | Failed: 0
+✨ All integrity checks passed successfully (100% verified)!
 ```
 
 ---
 
-## 5. 유지보수 및 차기 버전 업데이트 가이드
+## 6. 유지보수 및 차기 버전 업데이트 가이드
 
 향후 보험사에서 신규 개정판(예: Hi2610 또는 Hi2701)이 출시될 경우:
 1. 본 문서의 개정 로그에 변경점을 기록.
-2. `full_rider_selection_matrix.md`의 신규/삭제 담보를 업데이트.
+2. `full_rider_selection_matrix.md`의 신규/삭제 담보를 업데이트하고 카디널리티(슬롯 vs 실질 특약수)를 재집계.
 3. `standard_50k_30yr_quote.md`의 메타데이터와 보험료를 재산출.
-4. `bun run scripts/verify_integrity.ts`를 실행하여 40개 무결성 테스트를 통과시킨 후 커밋합니다.
+4. `bun run scripts/verify_integrity.ts`를 실행하여 65개 무결성 테스트를 통과시킨 후 커밋합니다.

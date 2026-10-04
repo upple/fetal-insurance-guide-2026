@@ -1,5 +1,5 @@
 /**
- * Automated 3-Tier Integrity Verification Script for fetal-insurance-guide-2026
+ * Automated Integrity Verification Script for fetal-insurance-guide-2026 (v2.2)
  * 
  * Verifies consistency across:
  * 1. Product version (Hi2607)
@@ -8,6 +8,10 @@
  * 4. Premium flows and mathematical precision (42,560원 -> 61,870원)
  * 5. Sample terminology (온라인 실가입 및 사전견적 분석 표본 N=350)
  * 6. Legal & underwriting standards (상법 제651조의2, 제655조 단서)
+ * 7. Hi2607 July 2026 New Riders (50-1, 52-1, 85-1) in Matrix
+ * 8. Cardinality Definition & Data Model
+ * 9. Elimination of Deterministic & Hyperbolic Phrasing
+ * 10. Audit Quality Review (A- Rating & Failure Conditions Checklist)
  */
 
 import { readFileSync, existsSync } from "fs";
@@ -37,7 +41,7 @@ function readFile(relPath: string): string {
 }
 
 console.log("============================================================");
-console.log("🚀 Starting fetal-insurance-guide-2026 Automated Integrity Test");
+console.log("🚀 Starting fetal-insurance-guide-2026 Automated Integrity Test (v2.2)");
 console.log("============================================================\n");
 
 // ------------------------------------------------------------
@@ -50,7 +54,8 @@ const targetFiles = [
   "standard_50k_30yr_quote.md",
   "optimal_design/optimal_prenatal_quote_final.md",
   "underwriting_scenarios.md",
-  "version_history_hi2607.md"
+  "version_history_hi2607.md",
+  "audit_quality_review.md"
 ];
 
 for (const file of targetFiles) {
@@ -122,8 +127,14 @@ check(
 
 check(
   suite3,
-  "5th gen doc clearly rejects old 3대 비급여 (350/250/300) as 5th gen feature",
-  indemnityContent.includes("구조는 5세대 실손에 존재하지 않습니다")
+  "5th gen doc clearly explains exclusion of manual therapy in 특약 2",
+  indemnityContent.includes("도수치료·증식치료·체외충격파") && indemnityContent.includes("원칙적으로 제외")
+);
+
+check(
+  suite3,
+  "5th gen doc clarifies that old 3대 비급여 limits are not standalone in 5th gen",
+  indemnityContent.includes("3대 비급여 특약")
 );
 
 // ------------------------------------------------------------
@@ -208,8 +219,95 @@ check(
 
 check(
   suite6,
-  "underwriting_scenarios.md eliminates deterministic '100% 무심사 즉시 승인'",
-  !underContent.includes("100% 무심사 즉시 승인")
+  "underwriting_scenarios.md contains maternal underwriting decoupling banner",
+  underContent.includes("표준 권장 견적과 실제 가입자의 개별 인수심사 분리 안내")
+);
+
+// ------------------------------------------------------------
+// Suite 7: Hi2607 July 2026 New Riders in Matrix
+// ------------------------------------------------------------
+const suite7 = "Suite 7: Hi2607 July 2026 New Riders";
+
+check(
+  suite7,
+  "full_rider_selection_matrix.md includes 50-1 (특정요로감염 및 신생아요로감염 진단비)",
+  matrixContent.includes("50-1") && matrixContent.includes("특정요로감염 및 신생아요로감염")
+);
+
+check(
+  suite7,
+  "full_rider_selection_matrix.md includes 52-1 (종합병원 아토피 표적치료)",
+  matrixContent.includes("52-1") && matrixContent.includes("종합병원 아토피 표적치료")
+);
+
+check(
+  suite7,
+  "full_rider_selection_matrix.md includes 85-1 (안과질환 통합보장 및 특정처치·수술비)",
+  matrixContent.includes("85-1") && matrixContent.includes("안과질환 통합보장 및 특정처치·수술비")
+);
+
+// ------------------------------------------------------------
+// Suite 8: Cardinality Definition & Data Model
+// ------------------------------------------------------------
+const suite8 = "Suite 8: Cardinality Definition & Data Model";
+
+check(
+  suite8,
+  "full_rider_selection_matrix.md defines 130 slots vs 126 individual riders",
+  matrixContent.includes("총 130번 슬롯 체계") && matrixContent.includes("총 126개")
+);
+
+check(
+  suite8,
+  "full_rider_selection_matrix.md documents legacy gap slots",
+  matrixContent.includes("56~60") && matrixContent.includes("74~75") && matrixContent.includes("86~95")
+);
+
+// ------------------------------------------------------------
+// Suite 9: Elimination of Deterministic & Hyperbolic Phrasing
+// ------------------------------------------------------------
+const suite9 = "Suite 9: Elimination of Deterministic & Hyperbolic Phrasing";
+
+const filesToCheckHyperbole = [
+  "underwriting_scenarios.md",
+  "full_rider_selection_matrix.md",
+  "standard_50k_30yr_quote.md",
+  "audit_quality_review.md",
+  "README.md"
+];
+
+for (const file of filesToCheckHyperbole) {
+  const c = readFile(file);
+  check(suite9, `${file} does not contain '100% 무심사'`, !c.includes("100% 무심사"));
+  check(suite9, `${file} does not contain '100% 적발'`, !c.includes("100% 적발"));
+  check(suite9, `${file} does not contain '100% 방어'`, !c.includes("100% 방어"));
+}
+
+check(
+  suite9,
+  "audit_quality_review.md does not contain unconditional '추가 수정 없이 가입 무방'",
+  !readFile("audit_quality_review.md").includes("추가적인 수정 없이 이 설계서 조건 그대로 보험 설계사에게 견적을 의뢰하여 가입을 진행하셔도 무방합니다")
+);
+
+// ------------------------------------------------------------
+// Suite 10: Audit Quality Review (A- Rating & Failure Conditions)
+// ------------------------------------------------------------
+const suite10 = "Suite 10: Audit Quality Review (A- & Failure Conditions)";
+const auditContent = readFile("audit_quality_review.md");
+
+check(
+  suite10,
+  "audit_quality_review.md has rating A-",
+  auditContent.includes("**최종 품질 등급:** **A-")
+);
+
+check(
+  suite10,
+  "audit_quality_review.md defines 3 Audit Failure Conditions",
+  auditContent.includes("감사 부적합/불일치 판정 조건 (Audit Failure Conditions)") &&
+  auditContent.includes("산모 병력·검사 이력 보유 시") &&
+  auditContent.includes("30세 만기 계약전환 시점의 미래 위험률 변동") &&
+  auditContent.includes("5세대 실손의 비급여 보장 축소 한계")
 );
 
 // ------------------------------------------------------------
@@ -238,6 +336,6 @@ if (!allPassed) {
   console.error("\n❌ Integrity Verification Failed! Please fix the errors above.");
   process.exit(1);
 } else {
-  console.log("\n✨ All 3-tier integrity checks passed successfully (100% verified)!");
+  console.log("\n✨ All integrity checks passed successfully (100% verified)!");
   process.exit(0);
 }

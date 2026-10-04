@@ -9,14 +9,14 @@
 
 | 구분 | 문서명 | 주요 내용 |
 | :--- | :--- | :--- |
-| **🚀 실전 세팅** | **[`full_rider_selection_matrix.md`](full_rider_selection_matrix.md)** | **[전수 특약 매트릭스]** Hi2607 기준 130개 담보 전수 조사 및 실전 ON/OFF 세팅표 (동시지급·유사담보 비교 반영) |
+| **🚀 실전 세팅** | **[`full_rider_selection_matrix.md`](full_rider_selection_matrix.md)** | **[전수 특약 매트릭스]** Hi2607 130개 슬롯(실질 126종, 7월 신설 3종 포함) 전수 조사표 (카디널리티 명세 반영) |
 | **📱 다이렉트 매뉴얼** | **[`direct_quote_simulation_guide.md`](direct_quote_simulation_guide.md)** | **[실전 계산기 가이드]** 현대해상 다이렉트 화면 1:1 세팅 및 견적 공유링크 발급법 |
 | **💡 표준 권장안** | **[`standard_50k_30yr_quote.md`](standard_50k_30yr_quote.md)** | **[국민 표준 설계안]** 실비포함 5~6만원대 정밀 설계서 (암 1억, 뇌/심장 4천, 질후 5천, 재현 메타데이터 명시) |
 | **🏥 인수심사 전략** | **[`underwriting_scenarios.md`](underwriting_scenarios.md)** | **[5대 인수 시나리오]** 정상 산모 / 기저질환 / 이상소견 / 입원·수술 / 복합 병력(정신과·응급실) 언더라이팅 가이드 |
 | **📜 버전 개정 로그** | **[`version_history_hi2607.md`](version_history_hi2607.md)** | **[Hi2605 ➔ Hi2607 개정사]** 신설 특약(양수검사비 등) 분석 및 3단 대조(매트릭스-견적서-약관) 무결성 검증 |
 | **🏆 완성형 설계서** | **[`optimal_design/optimal_prenatal_quote_final.md`](optimal_design/optimal_prenatal_quote_final.md)** | 2026 최신 기준 완성형 표준 설계안 및 체크리스트 |
 | **📊 시장 통계 분석** | **[`market_premium_tiers_2026.md`](market_premium_tiers_2026.md)** | 온라인 실가입 및 사전견적 표본(N=350) 분석: 5~6만 원대 선호(62%) 요인 및 시기별 인출 흐름 |
-| **🔍 품질 감사 보고서** | **[`audit_quality_review.md`](audit_quality_review.md)** | 출처·정확성·최신성 품질 검토서 (KCD 질병코드 및 금감원 약관 검증) |
+| **🔍 품질 감사 보고서** | **[`audit_quality_review.md`](audit_quality_review.md)** | 한계 조건 명시형 감사 체크리스트 및 조건부 적합(A-) 품질 검토서 |
 | **⚖️ 보험사 비교** | **[`quotes/quote_comparison_3_insurers.md`](quotes/quote_comparison_3_insurers.md)** | 현대해상 굿앤굿 vs KB 금쪽같은 vs DB 아이러브 3사 심층 비교 |
 | **⏳ 만기 비교** | **[`quotes/quote_30year_vs_100year.md`](quotes/quote_30year_vs_100year.md)** | 30세 만기 vs 100세 만기 비용 및 화폐가치 시뮬레이션 |
 | **🩺 5세대 실손 분석** | **[`raw_sources/05_indemnity_health_insurance_5th_gen_2026.md`](raw_sources/05_indemnity_health_insurance_5th_gen_2026.md)** | 2026-05-06 시행 5세대 실손 체계 및 종합보험 4대 역할 분리 모델 |
@@ -34,7 +34,7 @@
 3. **후유장해 (장기 생활능력 상실 보전):**  
    질병후유장해(3%~) 5,000만 원, 상해후유장해 1억 원 ➔ 선천/후천 장애 시 평생 재활·특수교육 지원.
 4. **선천/신생아 집중 보장 (단기 고위험):**  
-   성인 일반 입원일당은 배제하고, `신생아질병입원(1-120일)` 및 `저체중아입원(3-60일)`에 집중 투자하여 NICU/인큐베이터 위험 집중 방어.
+   성인 일반 입원일당은 배제하고, `신생아질병입원(1-120일)` 및 `저체중아입원(3-60일)`에 집중 투자하여 NICU/인큐베이터 치료비의 실질적 정액 보완.
 
 ---
 
@@ -43,12 +43,12 @@
 ```
 fetal-insurance-guide-2026/
 ├── README.md                                          # 전체 가이드 인덱스 및 4대 역할 분리 체계
-├── full_rider_selection_matrix.md                     # [전수 특약 매트릭스] Hi2607 130개 담보 전수 조사표
+├── full_rider_selection_matrix.md                     # [전수 특약 매트릭스] Hi2607 전수 조사표 (카디널리티 명세·신규 3종 포함)
 ├── direct_quote_simulation_guide.md                   # [실전 계산기 가이드] 현대해상 다이렉트 1:1 매뉴얼
 ├── standard_50k_30yr_quote.md                         # [표준 권장 설계안] 5~6만원대 설계서 (재현 메타데이터 명시)
 ├── underwriting_scenarios.md                          # [인수심사 가이드] 5대 산모 병력/이상소견별 통과 전략
 ├── version_history_hi2607.md                          # [버전 개정사] Hi2605 ➔ Hi2607 로그 및 3단 대조 검증
-├── audit_quality_review.md                            # [CEO 감사 보고서] 약관 및 KCD 코드 검토서
+├── audit_quality_review.md                            # [품질 감사 보고서] 실패 조건 명시형 감사 체크리스트
 ├── market_premium_tiers_2026.md                       # [시장 조사 리포트] N=350 표본 분석 및 보험료 흐름
 ├── optimal_design/                                    # 최종 완성형 표준 설계안
 │   └── optimal_prenatal_quote_final.md
