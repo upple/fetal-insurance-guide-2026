@@ -1,16 +1,16 @@
 /**
- * Automated Integrity Verification Script for fetal-insurance-guide-2026 (v2.2)
+ * Automated Integrity Verification Script for fetal-insurance-guide-2026 (v2.3)
  * 
  * Verifies consistency across:
  * 1. Product version (Hi2607)
  * 2. Newborn disease hospitalization rider (1-120일, 1일차 첫날부터 보장)
- * 3. 5th-gen indemnity health insurance structure (급여 / 특약1 중증비급여 30% / 특약2 비중증비급여 50%)
+ * 3. 5th-gen indemnity health insurance structure (급여 / 특약1 중증비급여 5천만 한도·500만 상한 / 특약2 비중증 1천만 한도·50%)
  * 4. Premium flows and mathematical precision (42,560원 -> 61,870원)
  * 5. Sample terminology (온라인 실가입 및 사전견적 분석 표본 N=350)
- * 6. Legal & underwriting standards (상법 제651조의2, 제655조 단서)
+ * 6. Legal & underwriting standards (상법 제651조의2, 제655조 단서, Scenario E 성실 고지)
  * 7. Hi2607 July 2026 New Riders (50-1, 52-1, 85-1) in Matrix
- * 8. Cardinality Definition & Data Model
- * 9. Elimination of Deterministic & Hyperbolic Phrasing
+ * 8. Dynamic Cardinality Parsing & Verification (124 unique rows, 18 gaps, 7 groups)
+ * 9. Elimination of Deterministic, Avoidance & Hyperbolic Phrasing
  * 10. Audit Quality Review (A- Rating & Failure Conditions Checklist)
  */
 
@@ -41,7 +41,7 @@ function readFile(relPath: string): string {
 }
 
 console.log("============================================================");
-console.log("🚀 Starting fetal-insurance-guide-2026 Automated Integrity Test (v2.2)");
+console.log("🚀 Starting fetal-insurance-guide-2026 Automated Integrity Test (v2.3)");
 console.log("============================================================\n");
 
 // ------------------------------------------------------------
@@ -117,6 +117,18 @@ check(
   suite3,
   "5th gen doc defines 중증 비급여 (특약 1) with 30% copay",
   indemnityContent.includes("중증 비급여 (특약 1)") && indemnityContent.includes("30%")
+);
+
+check(
+  suite3,
+  "5th gen doc defines 중증 비급여 (특약 1) 5,000만 원 annual limit",
+  indemnityContent.includes("5,000만 원")
+);
+
+check(
+  suite3,
+  "5th gen doc defines 중증 비급여 (특약 1) 500만 원 out-of-pocket ceiling",
+  indemnityContent.includes("500만 원")
 );
 
 check(
@@ -223,6 +235,12 @@ check(
   underContent.includes("표준 권장 견적과 실제 가입자의 개별 인수심사 분리 안내")
 );
 
+check(
+  suite6,
+  "underwriting_scenarios.md does not contain avoidance phrasing '질문 문항 축소 효과'",
+  !underContent.includes("질문 문항 축소 효과")
+);
+
 // ------------------------------------------------------------
 // Suite 7: Hi2607 July 2026 New Riders in Matrix
 // ------------------------------------------------------------
@@ -247,26 +265,100 @@ check(
 );
 
 // ------------------------------------------------------------
-// Suite 8: Cardinality Definition & Data Model
+// Suite 8: Dynamic Cardinality Parsing & Verification
 // ------------------------------------------------------------
-const suite8 = "Suite 8: Cardinality Definition & Data Model";
+const suite8 = "Suite 8: Dynamic Cardinality Parsing & Verification";
+
+interface ParsedRider {
+  id: string;
+  name: string;
+}
+
+function parseMatrixRiders(content: string): {
+  totalRows: number;
+  riderRows: ParsedRider[];
+  groupCounts: number[];
+} {
+  const lines = content.split("\n");
+  const riderRows: ParsedRider[] = [];
+  
+  for (const line of lines) {
+    const match = line.match(/^\|\s*\*?\*?([0-9]+(?:-[0-9]+)?)\*?\*?\s*\|\s*([^|]+)\|/);
+    if (match && !line.includes("번호") && !line.includes(":---")) {
+      riderRows.push({ id: match[1], name: match[2].trim() });
+    }
+  }
+
+  const sections = content.split(/## [0-9]+\. 제[0-9]+군:/);
+  const groupCounts: number[] = [];
+  for (let i = 1; i < sections.length; i++) {
+    const secLines = sections[i].split("\n");
+    const count = secLines.filter(l => l.match(/^\|\s*\*?\*?[0-9]+(?:-[0-9]+)?\*?\*?\s*\|/)).length;
+    groupCounts.push(count);
+  }
+
+  return {
+    totalRows: riderRows.length,
+    riderRows,
+    groupCounts
+  };
+}
+
+const parsedMatrix = parseMatrixRiders(matrixContent);
 
 check(
   suite8,
-  "full_rider_selection_matrix.md defines 130 slots vs 126 individual riders",
-  matrixContent.includes("총 130번 슬롯 체계") && matrixContent.includes("총 126개")
+  "Dynamic parser extracted exactly 124 unique rider rows",
+  parsedMatrix.totalRows === 124,
+  `Expected 124, got ${parsedMatrix.totalRows}`
+);
+
+const expectedGroupCounts = [27, 39, 13, 11, 9, 11, 14];
+const groupSum = parsedMatrix.groupCounts.reduce((a, b) => a + b, 0);
+
+check(
+  suite8,
+  "Sum of functional groups matches total parsed rows (124)",
+  groupSum === 124,
+  `Group sum is ${groupSum}`
+);
+
+for (let g = 0; g < expectedGroupCounts.length; g++) {
+  check(
+    suite8,
+    `Group ${g + 1} has exactly ${expectedGroupCounts[g]} rows`,
+    parsedMatrix.groupCounts[g] === expectedGroupCounts[g],
+    `Expected ${expectedGroupCounts[g]}, got ${parsedMatrix.groupCounts[g]}`
+  );
+}
+
+// Verify 18 gap slots are strictly absent
+const gapSlots = [56, 57, 58, 59, 60, 74, 75, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 105];
+const parsedIds = new Set(parsedMatrix.riderRows.map(r => r.id));
+const hasAnyGap = gapSlots.some(gap => parsedIds.has(String(gap)));
+
+check(
+  suite8,
+  "None of the 18 legacy gap slots are present in parsed table",
+  !hasAnyGap
 );
 
 check(
   suite8,
-  "full_rider_selection_matrix.md documents legacy gap slots",
-  matrixContent.includes("56~60") && matrixContent.includes("74~75") && matrixContent.includes("86~95")
+  "full_rider_selection_matrix.md states 124 parsed rows and formula",
+  matrixContent.includes("총 124개 행") && matrixContent.includes("총 130번 슬롯 체계")
+);
+
+check(
+  suite8,
+  "README.md states 124종 parsed rows",
+  readFile("README.md").includes("실질 124종 전수 파싱")
 );
 
 // ------------------------------------------------------------
-// Suite 9: Elimination of Deterministic & Hyperbolic Phrasing
+// Suite 9: Elimination of Deterministic, Avoidance & Hyperbolic Phrasing
 // ------------------------------------------------------------
-const suite9 = "Suite 9: Elimination of Deterministic & Hyperbolic Phrasing";
+const suite9 = "Suite 9: Elimination of Deterministic, Avoidance & Hyperbolic Phrasing";
 
 const filesToCheckHyperbole = [
   "underwriting_scenarios.md",
@@ -287,6 +379,12 @@ check(
   suite9,
   "audit_quality_review.md does not contain unconditional '추가 수정 없이 가입 무방'",
   !readFile("audit_quality_review.md").includes("추가적인 수정 없이 이 설계서 조건 그대로 보험 설계사에게 견적을 의뢰하여 가입을 진행하셔도 무방합니다")
+);
+
+check(
+  suite9,
+  "full_rider_selection_matrix.md does not claim low birth weight riders are completely substitutable",
+  !matrixContent.includes("완전 대체 가능")
 );
 
 // ------------------------------------------------------------
@@ -336,6 +434,6 @@ if (!allPassed) {
   console.error("\n❌ Integrity Verification Failed! Please fix the errors above.");
   process.exit(1);
 } else {
-  console.log("\n✨ All integrity checks passed successfully (100% verified)!");
+  console.log("\n✨ All dynamic integrity checks passed successfully (100% verified)!");
   process.exit(0);
 }
