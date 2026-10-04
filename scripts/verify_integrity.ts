@@ -1,15 +1,15 @@
 /**
- * Automated Integrity Verification Script for fetal-insurance-guide-2026 (v2.3)
+ * Automated Integrity Verification Script for fetal-insurance-guide-2026 (v2.4)
  * 
  * Verifies consistency across:
- * 1. Product version (Hi2607)
- * 2. Newborn disease hospitalization rider (1-120일, 1일차 첫날부터 보장)
- * 3. 5th-gen indemnity health insurance structure (급여 / 특약1 중증비급여 5천만 한도·500만 상한 / 특약2 비중증 1천만 한도·50%)
+ * 1. Product version (Hi2607 across all files & unified v2.4 metadata)
+ * 2. Newborn & Low Birth Weight conditions (신생아질병 1-120일 첫날부터 & 저체중아 2.5kg이하/3일이상/3일째부터)
+ * 3. 5th-gen indemnity health insurance structure (급여 / 특약1 중증비급여 5천만 한도·상급종병 500만상한 / 특약2 비중증 1천만 한도·50%)
  * 4. Premium flows and mathematical precision (42,560원 -> 61,870원)
- * 5. Sample terminology (온라인 실가입 및 사전견적 분석 표본 N=350)
+ * 5. Sample terminology & anonymized dataset integrity (N=350, 62%/26%/8%/4% breakdown)
  * 6. Legal & underwriting standards (상법 제651조의2, 제655조 단서, Scenario E 성실 고지)
  * 7. Hi2607 July 2026 New Riders (50-1, 52-1, 85-1) in Matrix
- * 8. Dynamic Cardinality Parsing & Verification (124 unique rows, 18 gaps, 7 groups)
+ * 8. Dynamic Cardinality Parsing & Verification (124 unique rows, 0 duplicate IDs, 18 gaps, 7 groups)
  * 9. Elimination of Deterministic, Avoidance & Hyperbolic Phrasing
  * 10. Audit Quality Review (A- Rating & Failure Conditions Checklist)
  */
@@ -41,7 +41,7 @@ function readFile(relPath: string): string {
 }
 
 console.log("============================================================");
-console.log("🚀 Starting fetal-insurance-guide-2026 Automated Integrity Test (v2.3)");
+console.log("🚀 Starting fetal-insurance-guide-2026 Automated Integrity Test (v2.4)");
 console.log("============================================================\n");
 
 // ------------------------------------------------------------
@@ -70,12 +70,19 @@ check(
   !matrixContent.includes("Hi2605 / 2026년 최신판")
 );
 
-// ------------------------------------------------------------
-// Suite 2: Newborn Disease Hospitalization (신생아질병입원일당)
-// ------------------------------------------------------------
-const suite2 = "Suite 2: Newborn Disease Hospitalization (1-120일)";
 const quoteContent = readFile("standard_50k_30yr_quote.md");
 const finalContent = readFile("optimal_design/optimal_prenatal_quote_final.md");
+const auditContent = readFile("audit_quality_review.md");
+
+check(suite1, "standard_50k_30yr_quote.md has unified v2.4 metadata", quoteContent.includes("v2.4"));
+check(suite1, "optimal_prenatal_quote_final.md has unified v2.4 metadata", finalContent.includes("v2.4"));
+check(suite1, "audit_quality_review.md has unified v2.4 metadata", auditContent.includes("v2.4"));
+check(suite1, "full_rider_selection_matrix.md specifies Group 3 has 13종", matrixContent.includes("제3군: 질병 입원일당 담보 (13종)"));
+
+// ------------------------------------------------------------
+// Suite 2: Newborn & Low Birth Weight Conditions (신생아질병 및 저체중아입원)
+// ------------------------------------------------------------
+const suite2 = "Suite 2: Newborn & Low Birth Weight Hospitalization Conditions";
 
 check(
   suite2,
@@ -100,6 +107,46 @@ check(
   "optimal_prenatal_quote_final.md specifies 1-120일 and day 1 payout",
   finalContent.includes("신생아질병입원일당(1-120일)") && finalContent.includes("첫날부터 매일 1만원 지급")
 );
+
+// 저체중아입원일당: 2.5kg 이하 / 3일 이상 / 3일째부터 지급 checks
+check(
+  suite2,
+  "standard_50k_30yr_quote.md 저체중아입원 condition is 2.5kg 이하 / 3일째부터",
+  quoteContent.includes("2.5kg 이하") && quoteContent.includes("3일째부터")
+);
+
+check(
+  suite2,
+  "optimal_prenatal_quote_final.md 저체중아입원 condition is 2.5kg 이하 / 3일째부터",
+  finalContent.includes("2.5kg 이하") && finalContent.includes("3일째부터")
+);
+
+check(
+  suite2,
+  "full_rider_selection_matrix.md 저체중아입원 condition is 2.5kg 이하 / 3일째부터",
+  matrixContent.includes("2.5kg 이하") && matrixContent.includes("3일째부터")
+);
+
+const policyContent = readFile("raw_sources/02_hyundai_good_and_good_policy_2026.md");
+check(
+  suite2,
+  "02_hyundai_good_and_good_policy_2026.md 저체중아입원 condition is 2.5kg 이하 / 3일째부터",
+  policyContent.includes("2.5kg 이하") && policyContent.includes("3일째부터")
+);
+
+// Verify that outdated "4일째" and "2.5kg 미만" are strictly zero across all active policy/guide files
+const activeGuideFiles = [
+  ...targetFiles.filter(f => f !== "version_history_hi2607.md"),
+  "direct_quote_simulation_guide.md",
+  "quotes/quote_comparison_3_insurers.md",
+  "raw_sources/02_hyundai_good_and_good_policy_2026.md"
+];
+
+for (const f of activeGuideFiles) {
+  const c = readFile(f);
+  check(suite2, `${f} contains zero occurrences of '4일째'`, !c.includes("4일째"));
+  check(suite2, `${f} contains zero occurrences of '2.5kg 미만'`, !c.includes("2.5kg 미만"));
+}
 
 // ------------------------------------------------------------
 // Suite 3: 5th Generation Indemnity Insurance Structure
@@ -129,6 +176,18 @@ check(
   suite3,
   "5th gen doc defines 중증 비급여 (특약 1) 500만 원 out-of-pocket ceiling",
   indemnityContent.includes("500만 원")
+);
+
+check(
+  suite3,
+  "5th gen doc specifies 500만 원 out-of-pocket ceiling scope to 상급·종합병원 입원",
+  indemnityContent.includes("상급·종합병원 입원") && indemnityContent.includes("500만 원")
+);
+
+check(
+  suite3,
+  "audit_quality_review.md specifies 500만 원 ceiling scope to 상급·종합병원 입원",
+  auditContent.includes("상급·종합병원 입원") && auditContent.includes("500만 원")
 );
 
 check(
@@ -202,7 +261,26 @@ check(
 check(
   suite5,
   "README.md uses unified sample phrasing",
-  readFile("README.md").includes("온라인 실가입 및 사전견적 표본(N=350)")
+  readFile("README.md").includes("온라인 실가입 및 사전견적 분석 표본(N=350)")
+);
+
+// Anonymized raw dataset verification
+const rawDatasetStr = readFile("raw_sources/market_sample_350_anonymized.json");
+const rawDataset = JSON.parse(rawDatasetStr);
+
+check(
+  suite5,
+  "market_sample_350_anonymized.json contains exactly 350 samples",
+  rawDataset.samples && rawDataset.samples.length === 350
+);
+
+check(
+  suite5,
+  "market_sample_350_anonymized.json metadata tier breakdown matches (217, 91, 28, 14)",
+  rawDataset.metadata.tier_breakdown["Tier 1 (가성비 권장형)"] === 217 &&
+  rawDataset.metadata.tier_breakdown["Tier 2 (표준 권유형)"] === 91 &&
+  rawDataset.metadata.tier_breakdown["Tier 3 (초실속형)"] === 28 &&
+  rawDataset.metadata.tier_breakdown["Tier 4 (프리미엄형)"] === 14
 );
 
 // ------------------------------------------------------------
@@ -339,6 +417,13 @@ const hasAnyGap = gapSlots.some(gap => parsedIds.has(String(gap)));
 
 check(
   suite8,
+  "All 124 parsed rows have unique IDs (zero duplicates in parsed tables)",
+  parsedIds.size === 124,
+  `Expected 124 unique IDs, got ${parsedIds.size}`
+);
+
+check(
+  suite8,
   "None of the 18 legacy gap slots are present in parsed table",
   !hasAnyGap
 );
@@ -377,6 +462,24 @@ for (const file of filesToCheckHyperbole) {
 
 check(
   suite9,
+  "underwriting_scenarios.md does not contain internal assumption '대폭 완화'",
+  !underContent.includes("단약 유지 확인 시 태아 위험 평가 대폭 완화")
+);
+
+check(
+  suite9,
+  "underwriting_scenarios.md does not contain internal assumption '수용률 상대적으로 우수'",
+  !underContent.includes("수용률 상대적으로 우수")
+);
+
+check(
+  suite9,
+  "underwriting_scenarios.md does not contain internal assumption '1~2주 지나 안정 상태 확인 후 접수 권장'",
+  !underContent.includes("1~2주 지나 안정 상태 확인 후 접수 권장")
+);
+
+check(
+  suite9,
   "audit_quality_review.md does not contain unconditional '추가 수정 없이 가입 무방'",
   !readFile("audit_quality_review.md").includes("추가적인 수정 없이 이 설계서 조건 그대로 보험 설계사에게 견적을 의뢰하여 가입을 진행하셔도 무방합니다")
 );
@@ -391,7 +494,6 @@ check(
 // Suite 10: Audit Quality Review (A- Rating & Failure Conditions)
 // ------------------------------------------------------------
 const suite10 = "Suite 10: Audit Quality Review (A- & Failure Conditions)";
-const auditContent = readFile("audit_quality_review.md");
 
 check(
   suite10,
