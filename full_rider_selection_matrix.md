@@ -36,14 +36,16 @@
 
 본 매트릭스는 현대해상 굿앤굿어린이종합보험Q (Hi2607) 전산 화면 및 공식 약관의 전체 담보를 다음의 정밀 데이터 모델 스키마에 따라 체계적으로 분류·관리합니다:
 
-```text
-[특약 데이터 스키마]
-├ display_id       : 다이렉트 및 지점 청약서 화면상 노출되는 기준 슬롯 번호 (01~130번)
-├ group_id         : 7대 대분류 기능군
-├ rider_name       : 현대해상 Hi2607 공식 약관 정식 명칭
-├ is_bundle        : 세부 보장 분리 여부 (예: 일배책 3종, 뇌혈관 2종, 심혈관 7종)
-├ bundle_parent_id : 상위 묶음 번호
-└ is_new_hi2607    : 2026년 7월 Hi2607 개정 신설 특약 여부
+```mermaid
+erDiagram
+    RIDER_DATA_SCHEMA {
+        int display_id "다이렉트·지점 화면 기준 슬롯 번호 (01~130번)"
+        string group_id "7대 대분류 기능군 (1~7군)"
+        string rider_name "현대해상 Hi2607 공식 약관 정식 명칭"
+        boolean is_bundle "세부 보장 분리 여부 (일배책 3종, 심혈관 7종 등)"
+        int bundle_parent_id "상위 묶음 번호"
+        boolean is_new_hi2607 "2026년 7월 Hi2607 개정 신설 특약 여부"
+    }
 ```
 
 ### 1. 특약 총 수량 정의 (집계 기준 공시)

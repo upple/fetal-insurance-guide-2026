@@ -38,28 +38,29 @@
 
 ## 📋 5대 실전 인수 시나리오 의사결정 트리
 
-```text
-[인수 시나리오 의사결정 체계도]
-               [임신 확인 및 가입 검토]
-                         │
-        ┌────────────────┴────────────────┐
-        ▼                                 ▼
-   [산모 병력 없음]                [산모 병력 / 진료 이력]
-        │                                 │
-  [Scenario A: 정상]             ┌────────┴────────┐
-        │                        ▼                 ▼
- [표준 권장안 청약]      [과거 기저질환/투약]  [임신 중 이상소견/진료]
-                                 │                 │
-                         [Scenario B: 기저]  ┌─────┴─────┐
-                                 │           ▼           ▼
-                         [서류/사전심사] [검사 이상]  [입원/수술/응급실]
-                                             │           │
-                                       [Scenario C] [Scenario D]
-                                             │           │
-                         └───────────────────┴─────┬─────┘
-                                                   ▼
-                                       [Scenario E: 복합 이력]
-                                       (정신과 중단 + 응급실 검사)
+```mermaid
+flowchart TD
+    Start["임신 확인 및 가입 검토"]
+    
+    Start -->|"고지사항 없음"| Clean["산모 병력 없음 (무이력 건강체)"]
+    Start -->|"고지사항 있음"| Medical["산모 병력 / 진료 이력 보유"]
+    
+    Clean --> SceneA["Scenario A: 정상 임산부<br/>(표준 권장안 다이렉트 청약)"]
+    
+    Medical --> Past["과거 기저질환 / 투약 이력"]
+    Medical --> Pregnancy["임신 중 이상소견 / 진료 이력"]
+    
+    Past --> SceneB["Scenario B: 기저질환 보유 산모<br/>(갑상선·자궁근종 등 사전심사)"]
+    
+    Pregnancy --> TestAnomaly["검사 수치 이상 소견"]
+    Pregnancy --> AcuteVisit["급성 진료 / 응급실 방문"]
+    
+    TestAnomaly --> SceneC["Scenario C: 임신성 당뇨·고혈압<br/>(정밀검사 추적 심사)"]
+    AcuteVisit --> SceneD["Scenario D: 임신 중 응급실 진료<br/>(급성 장염 등 인과관계 분리)"]
+    
+    Past -.-> Composite["복합 이력 발생"]
+    Pregnancy -.-> Composite
+    Composite --> SceneE["Scenario E: 복합 이력 산모<br/>(정신과 단약 + 임신 중 응급실)"]
 ```
 
 ---
