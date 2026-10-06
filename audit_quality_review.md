@@ -3,18 +3,19 @@
 - **감사 일시:** 2026년 9월 29일 (2026년 10월 v2.4 최신 개정판 검증 완료)
 - **감사 대상:** `fetal-insurance-guide-2026/` 내 전체 아카이브 및 최종 견적서
 - **감사 관점:** 최고책임자 관점의 비판적 스트레스 테스트 (출처 신뢰도, 팩트 정확성, 2026년 최신성, 잠재적 리스크)
-- **최종 품질 등급:** **A- (조건부 실무 벤치마크 적합 — 표준 건강체 기준 정합성 확인 / 병력자 사전심사 필수)**
+- **최종 품질 등급:** **조건부 적합 (기존 분석을 공식 안내와 이중 대조했고, 보험료·표본·문서 숫자를 재검산했으며, 개인 청약에 따라 달라지는 항목은 조건부로 표시함)**
+- **출처 범위표:** [`SOURCE_MANIFEST.md`](SOURCE_MANIFEST.md)
 
 ---
 
 ## 1. 감사 부적합/불일치 판정 조건 (Audit Failure Conditions)
 
-본 아카이브의 최종 견적서([optimal_prenatal_quote_final.md](file:///home/upple/workspace/test/fetal-insurance-guide-2026/optimal_design/optimal_prenatal_quote_final.md)) 및 표준 견적서([standard_50k_30yr_quote.md](file:///home/upple/workspace/test/fetal-insurance-guide-2026/standard_50k_30yr_quote.md))는 아래의 3대 조건 중 하나라도 부합하지 않을 경우 **'견적 즉시 적용 불가(Audit Failure)'**로 판정하며, 개별 맞춤 심사를 거쳐야 합니다.
+본 아카이브의 최종 견적서([optimal_prenatal_quote_final.md](optimal_design/optimal_prenatal_quote_final.md)) 및 표준 견적서([standard_50k_30yr_quote.md](standard_50k_30yr_quote.md))는 아래의 3대 조건 중 하나라도 부합하지 않을 경우 **'견적 즉시 적용 불가(Audit Failure)'**로 판정하며, 개별 맞춤 심사를 거쳐야 합니다.
 
 | 번호 | 부적합 판정 조건 (Failure Conditions) | 근거 및 주의 사항 |
 | :--- | :--- | :--- |
-| **01** | **산모 병력·검사 이력 보유 시 (유산방지주사, 시험관, 질정, 임신성 당뇨/고혈압 등)** | 본 견적은 **'29세 사무직 건강체 산모(무병력자)'** 전제 전산 견적입니다. 병력 보유 시 표준 견적(월 5.7만 원)이 그대로 통과되지 않으며, 알릴의무 고지 및 서류 심사 결과에 따라 할증·부담보·인수 유예가 발생할 수 있습니다. ([underwriting_scenarios.md](file:///home/upple/workspace/test/fetal-insurance-guide-2026/underwriting_scenarios.md) 참조) |
-| **02** | **30세 만기 계약전환 시점의 미래 위험률 변동 미인지 시** | 30세 만기 시 무심사 계약전환제도는 보장연장 권리(Insurability Option)이나, **전환 시점(30년 뒤)의 연령별·위험률별 보험료로 재산정**되므로 평생 균일 보험료 보장이 아님을 사전 인지해야 합니다. |
+| **01** | **산모 병력·검사 이력 보유 시 (유산방지주사, 시험관, 질정, 임신성 당뇨/고혈압 등)** | 본 견적은 **'29세 사무직 건강체 산모(무병력자)'** 전제 예시입니다. 병력 보유 시 표준 견적이 그대로 적용되지 않을 수 있으며, 고지 및 서류 심사 결과에 따라 할증·부담보·인수 유예가 발생할 수 있습니다. ([underwriting_scenarios.md](underwriting_scenarios.md) 참조) |
+| **02** | **30세 만기 계약전환의 범위를 확인하지 않은 경우** | 계약전환은 대상 담보·전환 시점·전환 후 보험료와 조건을 특별약관에서 확인해야 합니다. 모든 담보가 자동 연장되거나 평생 균일 보험료가 보장된다고 전제하지 않습니다. |
 | **03** | **5세대 실손의 비급여 보장 축소 한계 미인지 시** | 2026년 5세대 실손은 비급여 특약2(비중증)에서 비급여 도수치료 및 비급여 주사료가 원칙적으로 제외·축소되며 자기부담금 50%(연간 1천만 원 한도)가 적용되므로, 실손 하나만으로 모든 영유아기 비급여 치료비가 전액 방어되지 않음을 전제해야 합니다. |
 
 ---
@@ -23,15 +24,11 @@
 
 ### [1차 공적·법적 출처 검증]
 - **검증 대상:** 금융위원회, 금융감독원, 손해보험협회 공시실, 현대해상/KB손보/DB손보 표준사업방법서 및 상품요약서
-- **평가:** 
-  - 각 손해보험사의 실제 판매 중인 정규 인가 상품(현대해상 굿앤굿어린이종합보험Q Hi2607, KB 금쪽같은 자녀보험 Plus, DB 다이렉트 아이러브플러스)의 공식 약관을 기초로 함.
-  - 임의의 사설 견적이 아닌 금융당국의 승인을 받은 담보 규정과 한도를 인용하여 공적 신뢰도 확보.
+- **평가:** 상품명·공식 링크·기존 분석을 이번 검토에서 대조했습니다. 공식 페이지가 지지하는 상품 구조와 저장소가 제시한 개별 견적·추천 판단을 구분해 기록했으며, 개인 청약에서 달라지는 값은 오류가 아니라 조건부 값으로 분류했습니다.
 
 ### [2차 실전 커뮤니티 출처 검증]
 - **검증 대상:** DC인사이드 보험갤러리, 뽐뿌 보험포럼, 맘카페 실가입자 청구 후기
-- **평가:**
-  - 보험 설계사의 영업성 바이럴 마케팅(사은품 유인 글, DB 수집용 블로그)을 배제함.
-  - 소비자의 실제 보험금 수령 경험(설소대 수술 청구, 황달 입원 청구 등)과 집단지성으로 검증된 '설계사 수당용 불필요 특약 리스트'를 취합하여 실전성을 제고함.
+- **평가:** 커뮤니티 자료는 경험과 의견을 확인하는 보조 자료입니다. 표본 선정·중복 제거·청구 원본이 보존되어 있지 않아 “집단지성으로 검증됨” 또는 지급 가능성의 우위를 사실로 단정하지 않습니다.
 
 ---
 
@@ -82,7 +79,7 @@
   - 산모가 임신 초기 유산방지주사(프로게스테론 주사), 질정 처방을 받았거나, 자궁근종, 시험관 아기 시술을 진행한 경우 다이렉트 자동 심사에서 서류 심사(소견서 제출) 또는 인수 유예가 발생할 수 있음.
 - **방어 대책:**
   - 1차 기형아 검사 이전에 청약을 진행하는 것이 이상 소견에 따른 서류 보완 또는 인수 유예 위험을 최소화하는 실무상 유리한 시점임.
-  - 고위험 임신(시험관 아기 등)의 경우 보험사별(현대/KB/DB) 심사 기준 및 소견서 요구 요건을 사전 비교하여 접근해야 함. ([underwriting_scenarios.md](file:///home/upple/workspace/test/fetal-insurance-guide-2026/underwriting_scenarios.md) 참조)
+  - 고위험 임신(시험관 아기 등)의 경우 보험사별 심사 기준 및 소견서 요구 요건을 사전 확인해야 함. ([underwriting_scenarios.md](underwriting_scenarios.md) 참조)
 
 ### [리스크 3] 다태아(쌍둥이) 임신 시의 한도 제한
 - **문제 제기:** 쌍둥이(다태아)의 경우 태아특약 가입 주수(보통 16주~20주 사이 서류 심사)가 단태아와 다르고 일부 담보 한도가 축소될 수 있음.
@@ -92,15 +89,15 @@
 
 ## 6. 최종 결론 및 평가 (Verdict)
 
-- **출처 신뢰도:** 9.5 / 10
-- **데이터 정확성:** 9.3 / 10
-- **2026년 최신성:** 9.5 / 10
-- **실전 활용도:** 9.2 / 10
+- **출처 신뢰도:** 공식 원문과 내부 분석의 역할을 분리해 이중 대조 완료
+- **데이터 정확성:** 보험료 합계·N=350 구간·특약 행 수·문서 간 숫자 재검산 완료
+- **2026년 최신성:** 현대해상 계약전환 안내와 금융위원회 5세대 실손 안내를 기준일에 대조
+- **실전 활용도:** 표준 프로필의 비교 출발점으로 적합하며, 병력·개인 입력은 별도 심사 영역
 
 **최종 감사 판정:**
-본 아카이브의 표준 견적서([optimal_prenatal_quote_final.md](file:///home/upple/workspace/test/fetal-insurance-guide-2026/optimal_design/optimal_prenatal_quote_final.md))는 **2026년 대한민국 손해보험 시장 기준에서 표준 건강체 산모(29세, 사무직, 무병력, 단태아 남아)를 대상으로 군더더기와 거품을 배제한 실무 벤치마크 설계안**입니다. 
+본 아카이브의 표준 견적서([optimal_prenatal_quote_final.md](optimal_design/optimal_prenatal_quote_final.md))는 **표준 건강체 산모(29세, 사무직, 무병력, 단태아 남아)를 가정한 비교용 설계안**입니다.
 
-다만 본 견적은 모든 산모에게 일률적으로 적용되는 확정 청약서가 아니므로, **산모에게 과거 병력, 임신 초기 호르몬제 처방(유산방지주사/질정), 기형아 검사 이상 소견 등이 있는 경우에는 [underwriting_scenarios.md](file:///home/upple/workspace/test/fetal-insurance-guide-2026/underwriting_scenarios.md)의 심사 시나리오 및 상법 제651조의2 고지의무 기준을 대조한 후 개별 언더라이팅 심사를 거쳐 청약을 진행**해야 합니다.
+다만 본 견적은 모든 산모에게 일률적으로 적용되는 확정 청약서가 아니므로, **산모에게 과거 병력, 임신 초기 호르몬제 처방(유산방지주사/질정), 기형아 검사 이상 소견 등이 있는 경우에는 [underwriting_scenarios.md](underwriting_scenarios.md)의 심사 시나리오와 청약서 질문표를 대조한 후 개별 심사를 거쳐 청약을 진행**해야 합니다.
 
 ---
 
@@ -116,4 +113,6 @@
 | **보험사** | **KB손해보험 공시실** | [kbinsure.co.kr/CG301010001.ec](https://www.kbinsure.co.kr/CG301010001.ec) | KB금쪽같은자녀보험Plus 사업방법서 및 정신건강 특약 규정 |
 | **보험사** | **DB손해보험 공시실** | [idbins.com/FWPRODS001.do](https://idbins.com/FWPRODS001.do) | 프로미라이프 아이러브건강보험 다이렉트 약관 요약서 |
 | **커뮤니티** | **DC인사이드 보험갤러리** | [gall.dcinside.com/mgallery/board/lists/?id=insurance](https://gall.dcinside.com/mgallery/board/lists/?id=insurance) | 실가입자 '칼질 특약 10선' 및 적립보험료 0원 집단지성 합의안 |
-| **커뮤니티** | **뽐뿌 보험포럼** | [ppomppu.co.kr/zboard/zboard.php?id=insurance](https://ppomppu.co.kr/zboard/zboard.php?id=insurance) | 설계사 견적 거품 제거 및 실손 연계 청약 실사례 |
+| **커뮤니티** | **뽐뿌 보험포럼** | [ppomppu.co.kr/zboard/zboard.php?id=insurance](https://www.ppomppu.co.kr/zboard/zboard.php?id=insurance) | 설계사 견적 거품 제거 및 실손 연계 청약 실사례 |
+
+출처 ID 기준표는 [`SOURCE_MANIFEST.md`](SOURCE_MANIFEST.md)에서 확인할 수 있습니다. 이번 감사에서 핵심 제도 문장은 [S1 현대해상 상품 안내](https://car.hi.co.kr/service.do?m=ebcf01fc28), [S3 금융위원회 5세대 실손 안내](https://www.fsc.go.kr/no040000?cnId=3203&curPage=1), [S4 상법 제655조](https://www.law.go.kr/lsLinkCommonInfo.do?lsJoLnkSeq=1032336231), [S5 대법원 95다25268](https://law.go.kr/LSW/precInfoP.do?evtNo=95%EB%8B%a425268)와 대조했습니다.

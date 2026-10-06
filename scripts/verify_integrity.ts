@@ -11,7 +11,8 @@
  * 7. Hi2607 July 2026 New Riders (50-1, 52-1, 85-1) in Matrix
  * 8. Dynamic Cardinality Parsing & Verification (124 unique rows, 0 duplicate IDs, 18 gaps, 7 groups)
  * 9. Elimination of Deterministic, Avoidance & Hyperbolic Phrasing
- * 10. Audit Quality Review (A- Rating & Failure Conditions Checklist)
+ * 10. Audit Quality Review (limitations & Failure Conditions Checklist)
+ * 11. Source Citation Coverage (official pages named in reader-facing docs)
  */
 
 import { readFileSync, existsSync } from "fs";
@@ -139,7 +140,11 @@ const activeGuideFiles = [
   ...targetFiles.filter(f => f !== "version_history_hi2607.md"),
   "direct_quote_simulation_guide.md",
   "quotes/quote_comparison_3_insurers.md",
-  "raw_sources/02_hyundai_good_and_good_policy_2026.md"
+  "quotes/quote_30year_vs_100year.md",
+  "raw_sources/01_dcinside_insurance_gallery_guide.md",
+  "raw_sources/02_hyundai_good_and_good_policy_2026.md",
+  "raw_sources/05_indemnity_health_insurance_5th_gen_2026.md",
+  "market_premium_tiers_2026.md"
 ];
 
 for (const f of activeGuideFiles) {
@@ -249,19 +254,19 @@ const suite5 = "Suite 5: Sample Terminology (N=350)";
 check(
   suite5,
   "market_premium_tiers_2026.md uses unified sample phrasing",
-  marketContent.includes("온라인 실가입 및 사전견적 분석 표본") && marketContent.includes("N = 350")
+  marketContent.includes("익명 관찰 표본") && marketContent.includes("N = 350")
 );
 
 check(
   suite5,
   "standard_50k_30yr_quote.md uses unified sample phrasing",
-  quoteContent.includes("온라인 실가입 및 사전견적 분석 표본(N=350)")
+  quoteContent.includes("익명 온라인 표본(N=350)") && quoteContent.includes("대표성 있는 시장 선호도")
 );
 
 check(
   suite5,
   "README.md uses unified sample phrasing",
-  readFile("README.md").includes("온라인 실가입 및 사전견적 분석 표본(N=350)")
+  readFile("README.md").includes("N=350 익명 온라인 관찰 표본") && readFile("README.md").includes("한계")
 );
 
 // Anonymized raw dataset verification
@@ -436,8 +441,8 @@ check(
 
 check(
   suite8,
-  "README.md states 124종 parsed rows",
-  readFile("README.md").includes("실질 124종 전수 파싱")
+  "README.md links to the reader-first guide structure",
+  readFile("README.md").includes("추천 읽는 순서") && readFile("README.md").includes("SOURCE_MANIFEST.md")
 );
 
 // ------------------------------------------------------------
@@ -450,7 +455,14 @@ const filesToCheckHyperbole = [
   "full_rider_selection_matrix.md",
   "standard_50k_30yr_quote.md",
   "audit_quality_review.md",
-  "README.md"
+  "README.md",
+  "direct_quote_simulation_guide.md",
+  "quotes/quote_30year_vs_100year.md",
+  "quotes/quote_comparison_3_insurers.md",
+  "raw_sources/01_dcinside_insurance_gallery_guide.md",
+  "raw_sources/02_hyundai_good_and_good_policy_2026.md",
+  "raw_sources/05_indemnity_health_insurance_5th_gen_2026.md",
+  "market_premium_tiers_2026.md"
 ];
 
 for (const file of filesToCheckHyperbole) {
@@ -490,15 +502,38 @@ check(
   !matrixContent.includes("완전 대체 가능")
 );
 
+const allPublicDocs = [
+  ...activeGuideFiles,
+  "SOURCE_MANIFEST.md"
+];
+for (const file of allPublicDocs) {
+  const c = readFile(file);
+  check(suite9, `${file} has no machine-specific absolute file links`, !c.includes("file:///home/upple/"));
+}
+
+check(
+  suite9,
+  "direct quote guide does not promise exact reproduction or permanent sharing",
+  !readFile("direct_quote_simulation_guide.md").includes("100% 동일") &&
+  !readFile("direct_quote_simulation_guide.md").includes("영구 공유 링크")
+);
+
+check(
+  suite9,
+  "30-year comparison does not promise an automatic coverage-gap solution",
+  !readFile("quotes/quote_30year_vs_100year.md").includes("보장 공백") ||
+  readFile("quotes/quote_30year_vs_100year.md").includes("자동으로 차단된다고 단정할 수 없습니다")
+);
+
 // ------------------------------------------------------------
-// Suite 10: Audit Quality Review (A- Rating & Failure Conditions)
+// Suite 10: Audit Quality Review (limitations & Failure Conditions)
 // ------------------------------------------------------------
-const suite10 = "Suite 10: Audit Quality Review (A- & Failure Conditions)";
+const suite10 = "Suite 10: Audit Quality Review (limitations & Failure Conditions)";
 
 check(
   suite10,
-  "audit_quality_review.md has rating A-",
-  auditContent.includes("**최종 품질 등급:** **A-")
+  "audit_quality_review.md states conditional suitability and limitations",
+  auditContent.includes("조건부 적합") && auditContent.includes("공식 안내와 이중 대조")
 );
 
 check(
@@ -506,9 +541,50 @@ check(
   "audit_quality_review.md defines 3 Audit Failure Conditions",
   auditContent.includes("감사 부적합/불일치 판정 조건 (Audit Failure Conditions)") &&
   auditContent.includes("산모 병력·검사 이력 보유 시") &&
-  auditContent.includes("30세 만기 계약전환 시점의 미래 위험률 변동") &&
+  auditContent.includes("30세 만기 계약전환의 범위를 확인하지 않은 경우") &&
   auditContent.includes("5세대 실손의 비급여 보장 축소 한계")
 );
+
+// ------------------------------------------------------------
+// Suite 11: Source Citation Coverage
+// ------------------------------------------------------------
+const suite11 = "Suite 11: Source Citation Coverage";
+const sourceManifest = readFile("SOURCE_MANIFEST.md");
+for (const id of ["S1", "S2", "S3", "S4", "S5", "S6", "S7"]) {
+  check(suite11, `SOURCE_MANIFEST.md defines ${id}`, sourceManifest.includes(`| ${id} |`));
+}
+
+for (const file of [
+  "README.md",
+  "full_rider_selection_matrix.md",
+  "standard_50k_30yr_quote.md",
+  "direct_quote_simulation_guide.md",
+  "optimal_design/optimal_prenatal_quote_final.md",
+  "quotes/quote_30year_vs_100year.md",
+  "quotes/quote_comparison_3_insurers.md",
+  "market_premium_tiers_2026.md",
+  "underwriting_scenarios.md",
+  "raw_sources/02_hyundai_good_and_good_policy_2026.md",
+  "raw_sources/05_indemnity_health_insurance_5th_gen_2026.md",
+  "audit_quality_review.md"
+]) {
+  const c = readFile(file);
+  check(
+    suite11,
+    `${file} names a reader-facing source section or manifest`,
+    c.includes("SOURCE_MANIFEST.md") || c.includes("참고 페이지") || c.includes("공식 웹 출처") || c.includes("검증 웹 출처")
+  );
+}
+
+for (const url of [
+  "https://car.hi.co.kr/service.do?m=ebcf01fc28",
+  "https://m.hi.co.kr/serviceAction.do?kw=00004F",
+  "https://www.fsc.go.kr/no040000?cnId=3203",
+  "https://www.law.go.kr/lsLinkCommonInfo.do?lsJoLnkSeq=1032336231",
+  "https://law.go.kr/LSW/precInfoP.do?evtNo=95%EB%8B%a425268"
+]) {
+  check(suite11, `SOURCE_MANIFEST.md includes ${url}`, sourceManifest.includes(url));
+}
 
 // ------------------------------------------------------------
 // Summary Report
