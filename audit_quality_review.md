@@ -109,10 +109,10 @@
 | **감독 기관** | **금융감독원 파인** | [fine.fss.or.kr](https://fine.fss.or.kr) | 유사암 진단비 한도 규제(20%) 및 금융분쟁조정사례 |
 | **공시 기관** | **손해보험협회 공시실** | [kpub.knia.or.kr](https://kpub.knia.or.kr) | 손해보험사별 불완전판매비율, 민원 건수, 보험료 지수 |
 | **공시 기관** | **보험다모아 포털** | [e-insmarket.or.kr](https://www.e-insmarket.or.kr) | 어린이/태아보험 3사(현대/KB/DB) 표준 가격지수 |
-| **보험사** | **현대해상 상품공시실** | [hi.co.kr/serviceAction.do?menuId=100340](https://www.hi.co.kr/serviceAction.do?menuId=100340) | 굿앤굿어린이종합보험Q 약관 조항(P52 뇌출혈, 설소대, 계약전환) |
+| **보험사** | **현대해상 상품공시실** | [hi.co.kr/serviceAction.do?menuId=100932](https://www.hi.co.kr/serviceAction.do?menuId=100932) | 굿앤굿어린이종합보험Q 약관 조항(P52 뇌출혈, 설소대, 계약전환) |
 | **보험사** | **KB손해보험 공시실** | [kbinsure.co.kr/CG301010001.ec](https://www.kbinsure.co.kr/CG301010001.ec) | KB금쪽같은자녀보험Plus 사업방법서 및 정신건강 특약 규정 |
 | **보험사** | **DB손해보험 공시실** | [idbins.com/FWPRODS001.do](https://idbins.com/FWPRODS001.do) | 프로미라이프 아이러브건강보험 다이렉트 약관 요약서 |
 | **커뮤니티** | **DC인사이드 보험갤러리** | [gall.dcinside.com/mgallery/board/lists/?id=insurance](https://gall.dcinside.com/mgallery/board/lists/?id=insurance) | 실가입자 '칼질 특약 10선' 및 적립보험료 0원 집단지성 합의안 |
 | **커뮤니티** | **뽐뿌 보험포럼** | [ppomppu.co.kr/zboard/zboard.php?id=insurance](https://www.ppomppu.co.kr/zboard/zboard.php?id=insurance) | 설계사 견적 거품 제거 및 실손 연계 청약 실사례 |
 
-출처 ID 기준표는 [`SOURCE_MANIFEST.md`](SOURCE_MANIFEST.md)에서 확인할 수 있습니다. 이번 감사에서 핵심 제도 문장은 [S1 현대해상 상품 안내](https://car.hi.co.kr/service.do?m=ebcf01fc28), [S3 금융위원회 5세대 실손 안내](https://www.fsc.go.kr/no040000?cnId=3203&curPage=1), [S4 상법 제655조](https://www.law.go.kr/lsLinkCommonInfo.do?lsJoLnkSeq=1032336231), [S5 대법원 95다25268](https://law.go.kr/LSW/precInfoP.do?evtNo=95%EB%8B%a425268)와 대조했습니다.
+출처 ID 기준표는 [`SOURCE_MANIFEST.md`](SOURCE_MANIFEST.md)에서 확인할 수 있습니다. 이번 감사에서 핵심 제도 문장은 [S1 현대해상 상품 안내](https://car.hi.co.kr/service.do?m=ebcf01fc28), [S3 금융위원회 5세대 실손 안내](https://www.fsc.go.kr/no040000?cnId=3203&curPage=1), [S4 상법 제655조](https://www.law.go.kr/LSW/lsLawLinkInfo.do?chrClsCd=010202&lsJoLnkSeq=1008161137), [S5 대법원 95다25268](https://www.law.go.kr/LSW/precInfoP.do?precSeq=152771)와 대조했습니다.

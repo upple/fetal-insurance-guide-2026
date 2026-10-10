@@ -84,6 +84,6 @@
 - [S1 현대해상 굿앤굿 상품 안내](https://car.hi.co.kr/service.do?m=ebcf01fc28): 30세 만기·계약전환 대상 담보·임신 주수 제한
 - [S2 현대해상 다이렉트 보험료 페이지](https://m.hi.co.kr/serviceAction.do?kw=00004F&menu=36&menuId=100222&src=text): 보험료·갱신 조건 안내
 - [S3 금융위원회 5세대 실손 안내](https://www.fsc.go.kr/no040000?cnId=3203&curPage=1): 5세대 실손의 시행일과 보장 구조
-- [S4 상법 제655조](https://www.law.go.kr/lsLinkCommonInfo.do?lsJoLnkSeq=1032336231), [S5 대법원 95다25268](https://law.go.kr/LSW/precInfoP.do?evtNo=95%EB%8B%a425268): 고지의무와 인과관계
+- [S4 상법 제655조](https://www.law.go.kr/LSW/lsLawLinkInfo.do?chrClsCd=010202&lsJoLnkSeq=1008161137), [S5 대법원 95다25268](https://www.law.go.kr/LSW/precInfoP.do?precSeq=152771): 고지의무와 인과관계
 
 이 문서는 보험 가입을 대신하는 금융·의료·법률 자문이 아닙니다. 실제 청약 전에는 보험사의 최신 상품설명서, 약관, 청약서 질문표와 개별 심사 결과를 확인하세요.

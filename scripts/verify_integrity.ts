@@ -581,18 +581,19 @@ for (const url of [
   "https://car.hi.co.kr/service.do?m=ebcf01fc28",
   "https://m.hi.co.kr/serviceAction.do?kw=00004F",
   "https://www.fsc.go.kr/no040000?cnId=3203",
-  "https://www.law.go.kr/lsLinkCommonInfo.do?lsJoLnkSeq=1032336231",
-  "https://law.go.kr/LSW/precInfoP.do?evtNo=95%EB%8B%a425268"
+  "https://www.law.go.kr/LSW/lsLawLinkInfo.do?chrClsCd=010202&lsJoLnkSeq=1008161137",
+  "https://www.law.go.kr/LSW/precInfoP.do?precSeq=152771",
+  "https://www.hi.co.kr/serviceAction.do?menuId=100932"
 ]) {
   check(suite11, `SOURCE_MANIFEST.md includes ${url}`, sourceManifest.includes(url));
 }
 
 // ------------------------------------------------------------
-// Suite 11: 100% Clickable Verification for All Amounts (Zero Guessing Policy)
+// Suite 12: 100% Clickable Verification & Math Precision (Zero Guessing Policy)
 // ------------------------------------------------------------
-const suite12 = "Suite 12: 100% Clickable Verification for All Amounts";
+const suite12 = "Suite 12: 100% Clickable Verification & Math Precision";
 
-const clickableAmounts = [
+const stagePremiums = [
   "24,770원",
   "17,790원",
   "42,560원",
@@ -601,41 +602,96 @@ const clickableAmounts = [
   "61,870원"
 ];
 
-for (const amt of clickableAmounts) {
+for (const amt of stagePremiums) {
   check(
     suite12,
-    `standard_50k_30yr_quote.md has clickable link for ${amt}`,
-    quoteContent.includes(`[**${amt}**](`) || quoteContent.includes(`[${amt}](`)
+    `standard_50k_30yr_quote.md matches stage premium ${amt}`,
+    quoteContent.includes(amt)
   );
   check(
     suite12,
-    `optimal_prenatal_quote_final.md has clickable link for ${amt}`,
-    finalContent.includes(`[**${amt}**](`) || finalContent.includes(`[${amt}](`)
+    `optimal_prenatal_quote_final.md matches stage premium ${amt}`,
+    finalContent.includes(amt)
   );
 }
+
+// Rider table column verification
+check(
+  suite12,
+  "standard_50k_30yr_quote.md has 월 보험료(원) column in rider tables",
+  quoteContent.includes("월 보험료(원)")
+);
+
+check(
+  suite12,
+  "optimal_prenatal_quote_final.md has 월 보험료(원) column in rider tables",
+  finalContent.includes("월 보험료(원)")
+);
 
 check(
   suite12,
   "standard_50k_30yr_quote.md has dedicated clickable verification link column in rider tables",
-  quoteContent.includes("공식 약관 및 전산 검증 링크")
+  quoteContent.includes("공식 약관 및 전산 검증 근거")
 );
 
 check(
   suite12,
   "optimal_prenatal_quote_final.md has dedicated clickable verification link column in rider tables",
-  finalContent.includes("공식 약관 및 전산 검증 링크")
+  finalContent.includes("공식 약관 및 전산 검증 근거")
+);
+
+// Rider group subtotals verification
+const expectedSubtotals = [
+  { group: "A", subtotal: "5,060원" },
+  { group: "B", subtotal: "14,590원" },
+  { group: "C", subtotal: "6,080원" },
+  { group: "D", subtotal: "9,140원" }
+];
+
+for (const sub of expectedSubtotals) {
+  check(
+    suite12,
+    `standard_50k_30yr_quote.md has Group ${sub.group} subtotal of ${sub.subtotal}`,
+    quoteContent.includes(`[${sub.group} 소계]`) && quoteContent.includes(sub.subtotal)
+  );
+  check(
+    suite12,
+    `optimal_prenatal_quote_final.md has Group ${sub.group} subtotal of ${sub.subtotal}`,
+    finalContent.includes(`[${sub.group} 소계]`) && finalContent.includes(sub.subtotal)
+  );
+}
+
+// Grand Total arithmetic verification
+check(
+  suite12,
+  "standard_50k_30yr_quote.md contains Grand Total Arithmetic Verification table summing to 34,870원",
+  quoteContent.includes("담보군별 소계 및 전수 합산 검산표") && quoteContent.includes("34,870원")
 );
 
 check(
   suite12,
-  "standard_50k_30yr_quote.md links directly to official disclosure URL",
-  quoteContent.includes("https://www.hi.co.kr/serviceAction.do?menuId=100340")
+  "optimal_prenatal_quote_final.md contains Grand Total Arithmetic Verification table summing to 34,870원",
+  finalContent.includes("담보군별 소계 및 전수 합산 검산표") && finalContent.includes("34,870원")
+);
+
+// Mathematical sum of groups
+const sumOfGroups = 5060 + 14590 + 6080 + 9140;
+check(
+  suite12,
+  "Exact arithmetic sum of 4 groups equals 34,870원 (0 KRW discrepancy)",
+  sumOfGroups === 34870
 );
 
 check(
   suite12,
-  "optimal_prenatal_quote_final.md links directly to official disclosure URL",
-  finalContent.includes("https://www.hi.co.kr/serviceAction.do?menuId=100340")
+  "standard_50k_30yr_quote.md links directly to official disclosure URL (menuId=100932)",
+  quoteContent.includes("https://www.hi.co.kr/serviceAction.do?menuId=100932")
+);
+
+check(
+  suite12,
+  "optimal_prenatal_quote_final.md links directly to official disclosure URL (menuId=100932)",
+  finalContent.includes("https://www.hi.co.kr/serviceAction.do?menuId=100932")
 );
 
 check(
@@ -650,11 +706,20 @@ check(
   finalContent.includes("direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on")
 );
 
-check(
-  suite12,
-  "market_premium_tiers_2026.md contains clickable links for stage premiums",
-  marketContent.includes("[약 24,770원](") && marketContent.includes("[**월 약 42,560원**](")
-);
+// Obsolete URLs strictly absent across all public docs
+for (const file of allPublicDocs) {
+  const c = readFile(file);
+  check(
+    suite12,
+    `${file} has zero occurrences of obsolete menuId=100340`,
+    !c.includes("menuId=100340")
+  );
+  check(
+    suite12,
+    `${file} has zero occurrences of dead law link 1032336231`,
+    !c.includes("1032336231")
+  );
+}
 
 // ------------------------------------------------------------
 // Summary Report

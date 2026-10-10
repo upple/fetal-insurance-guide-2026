@@ -55,7 +55,7 @@
 | 출처명 | 링크 (URL) | 정보 유형 및 검증 내용 |
 | :--- | :--- | :--- |
 | **S1 현대해상 상품 안내** | [굿앤굿 상품 안내](https://car.hi.co.kr/service.do?m=ebcf01fc28) | 30세 만기, 계약전환 대상 담보, 최대 100세 전환 |
-| **S6 현대해상 상품공시실** | [현대해상 상품공시실](https://www.hi.co.kr/serviceAction.do?menuId=100340) | 상품별 약관·계약전환 특별약관 원문을 찾는 경로 |
+| **S6 현대해상 상품공시실** | [현대해상 상품공시실](https://www.hi.co.kr/serviceAction.do?menuId=100932) | 상품별 약관·계약전환 특별약관 원문을 찾는 경로 |
 | **S7 보험다모아** | [보험다모아](https://www.e-insmarket.or.kr) | 보험료 비교의 공적 비교 경로 |
 | **금융소비자정보포털 파인** | [fine.fss.or.kr](https://fine.fss.or.kr) | 만기환급금과 적립보험료의 기회비용 및 금융감독원 안내 가이드 |
 | **보험엑시트 화폐가치 분석** | [bohumexit.com](https://bohumexit.com) | 인플레이션에 따른 장기 보험금 실질가치 하락 및 30세 만기 리모델링 분석 |

@@ -61,7 +61,7 @@ xychart-beta
 | **임신 중 (출생 전)** | [약 24,770원](https://direct.hi.co.kr) | [약 17,790원](https://fine.fss.or.kr) | [**월 약 42,560원**](direct_quote_simulation_guide.md#step-5-태아-실손의료비-동시-가입-체크) | [다이렉트 전산](https://direct.hi.co.kr) · [파인](https://fine.fss.or.kr) | 태아특약(선천이상/저체중아 등) 납입기 |
 | **출생 직후 (0세 신생아기)** | [약 34,870원](https://direct.hi.co.kr) | [약 27,000원](https://fine.fss.or.kr) | [**월 약 61,870원**](direct_quote_simulation_guide.md#step-5-태아-실손의료비-동시-가입-체크) | [다이렉트 전산](https://direct.hi.co.kr) · [손보협회](https://kpub.knia.or.kr) | 이 견적에서 출생 직후 실손이 가장 높게 기록됨 |
 | **만 1세 ~ 2세** | [약 34,870원](https://direct.hi.co.kr) | [약 14,000원 ~ 18,000원](https://fine.fss.or.kr) | [**월 약 48,000원 ~ 52,000원**](raw_sources/02_hyundai_good_and_good_policy_2026.md#1-상품-개요-및-최신-가입-인수-기준) | [보험다모아](https://www.e-insmarket.or.kr) · [파인](https://fine.fss.or.kr) | 이 견적에서 태아특약 종료와 실손 요율 변화가 함께 반영됨 |
-| **만 5세 이후 (초등 입학)** | [약 34,870원](https://direct.hi.co.kr) | [약 8,000원 ~ 10,000원](https://fine.fss.or.kr) | [**월 약 42,000원 ~ 44,000원**](raw_sources/02_hyundai_good_and_good_policy_2026.md#1-상품-개요-및-최신-가입-인수-기준) | [손보협회](https://kpub.knia.or.kr) · [공시실](https://www.hi.co.kr/serviceAction.do?menuId=100340) | 이 견적에서 기록된 범위이며 이후 보험료를 보장하지 않음 |)
+| **만 5세 이후 (초등 입학)** | [약 34,870원](https://direct.hi.co.kr) | [약 8,000원 ~ 10,000원](https://fine.fss.or.kr) | [**월 약 42,000원 ~ 44,000원**](raw_sources/02_hyundai_good_and_good_policy_2026.md#1-상품-개요-및-최신-가입-인수-기준) | [손보협회](https://kpub.knia.or.kr) · [공시실](https://www.hi.co.kr/serviceAction.do?menuId=100932) | 이 견적에서 기록된 범위이며 이후 보험료를 보장하지 않음 |
 
 ---
 

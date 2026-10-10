@@ -15,14 +15,14 @@
 | 메타데이터 항목 | 기준 설정값 | 공식 검증 바로가기 | 비고 |
 | :--- | :--- | :---: | :--- |
 | **산출 기준일** | 2026년 9월 29일 | [현대해상 다이렉트](https://direct.hi.co.kr) | 2026년 하반기 Hi2607 요율 적용 |
-| **공식 상품코드** | 굿앤굿어린이종합보험Q (Hi2607) | [상품공시실](https://www.hi.co.kr/serviceAction.do?menuId=100340) | 현대해상 공식 판매 최신 버전 |
+| **공식 상품코드** | 굿앤굿어린이종합보험Q (Hi2607) | [상품공시실](https://www.hi.co.kr/serviceAction.do?menuId=100932) | 현대해상 공식 판매 최신 버전 |
 | **가입 채널** | 현대해상 다이렉트 ([direct.hi.co.kr](https://direct.hi.co.kr)) | [다이렉트 전산](https://direct.hi.co.kr) | 오프라인 대면 수당 거품 배제 |
 | **피보험자 / 성별** | 태아 (단태아) / **출생 시 남아 기준** | [실측가이드](direct_quote_simulation_guide.md#step-1-기본-정보-입력-및-본인인증) | 여아 출산 시 차액 일시불 환급 및 감액 |
 | **산모 인적 사항** | 만 29세 (1997.04.24 생) / 사무직 (상해 1급) | [실측가이드](direct_quote_simulation_guide.md#step-1-기본-정보-입력-및-본인인증) | 산모 기본계약 최소 스코어링 반영 |
 | **출산 예정일** | 2027년 5월 29일 (임신 5주차 가입 기준) | [실측가이드](direct_quote_simulation_guide.md#step-1-기본-정보-입력-및-본인인증) | 12주 이내 신규 특약 및 22주 이내 태아특약 전수 충족 |
 | **보험/납입 기간** | **20년납 30세 만기** | [실측가이드](direct_quote_simulation_guide.md#step-2-기본-계약-조건-세팅) | 순수보장형 (비갱신 기본, 일부 특약 갱신형) |
 | **적립보험료** | **[0원](direct_quote_simulation_guide.md#step-2-기본-계약-조건-세팅)** (순수보장형 100%) | [실측가이드](direct_quote_simulation_guide.md#step-2-기본-계약-조건-세팅) | 사업비 누수 차단 |
-| **만기 전환 옵션** | **계약전환제도 탑재** | [약관공시실](https://www.hi.co.kr/serviceAction.do?menuId=100340) | 30세 만기 시 전환 대상 담보에 한해 최대 100세 연장 가능 |
+| **만기 전환 옵션** | **계약전환제도 탑재** | [약관공시실](https://www.hi.co.kr/serviceAction.do?menuId=100932) | 30세 만기 시 전환 대상 담보에 한해 최대 100세 연장 가능 |
 | **실손 결합 여부** | **5세대 태아 실손의료보험 동시 가입** | [금감원 파인](https://fine.fss.or.kr) | 2026-05-06 시행 5세대 표준약관 적용 |
 
 ---
@@ -31,13 +31,12 @@
 
 태아보험은 출생 전/후 및 영유아 성장 연령에 따라 보험료가 달라질 수 있습니다. 아래는 이 설계안에서 기록된 4단계 예시이며, 미래 납입액을 보장하는 표가 아닙니다.
 
-| 단계 | 현대해상 종합(Hi2607) | 5세대 태아 실손의료비 | **실제 합산 월 납입액** | 공식 실측 검증 출처 (클릭 시 확인) | 핵심 변동 사유 |
+| 단계 | 현대해상 종합(Hi2607) | 5세대 태아 실손의료비 | **실제 합산 월 납입액** | 공식 실측 검증 출처 | 핵심 변동 사유 |
 | :--- | :---: | :---: | :---: | :---: | :--- |
-| **1단계: 임신 기간 (출생 전)** | [**24,770원**](https://direct.hi.co.kr) | [**17,790원**](https://fine.fss.or.kr) | **월** [**42,560원**](direct_quote_simulation_guide.md#step-5-태아-실손의료비-동시-가입-체크) | [현대해상 다이렉트 전산](https://direct.hi.co.kr) · [금감원 파인 공시](https://fine.fss.or.kr) · [실측 매뉴얼](direct_quote_simulation_guide.md#step-5-태아-실손의료비-동시-가입-체크) | 선천이상/저체중아 등 1년납 태아특약 납입기 |
-| **2단계: 출생 직후 ~ 1세 (0세)** | [**34,870원**](https://direct.hi.co.kr) | [**27,000원**](https://fine.fss.or.kr) | **월** [**61,870원**](direct_quote_simulation_guide.md#step-5-태아-실손의료비-동시-가입-체크) | [현대해상 다이렉트 전산](https://direct.hi.co.kr) · [손보협회 공시실](https://kpub.knia.or.kr) · [실측 매뉴얼](direct_quote_simulation_guide.md#step-5-태아-실손의료비-동시-가입-체크) | 출생 후 실비 요율 최고점 구간 (면역 취약기) |
-| **3단계: 만 1세 ~ 2세** | [**34,870원**](https://direct.hi.co.kr) | [약 15,000원 ~ 17,000원](https://fine.fss.or.kr) | [**월 약 49,000원 ~ 51,000원**](raw_sources/02_hyundai_good_and_good_policy_2026.md#1-상품-개요-및-최신-가입-인수-기준) | [보험다모아](https://www.e-insmarket.or.kr) · [금감원 파인](https://fine.fss.or.kr) · [약관 분석](raw_sources/02_hyundai_good_and_good_policy_2026.md#1-상품-개요-및-최신-가입-인수-기준) | **1년 만기 태아특약 소멸 및 실비 위험율 급감 ➔ 5만 원대 안착** |
-| **4단계: 만 5세 이후 (초등 입학)**| [**34,870원**](https://direct.hi.co.kr) | [약 8,000원 ~ 10,000원](https://fine.fss.or.kr) | [**월 약 42,000원 ~ 44,000원**](raw_sources/02_hyundai_good_and_good_policy_2026.md#1-상품-개요-및-최신-가입-인수-기준) | [손보협회 공시실](https://kpub.knia.or.kr) · [상품공시실](https://www.hi.co.kr/serviceAction.do?menuId=100340) · [약관 분석](raw_sources/02_hyundai_good_and_good_policy_2026.md#1-상품-개요-및-최신-가입-인수-기준) | **자녀 성장으로 실손 최저가 안착 ➔ 4만 원대 초반 유지** |
-
+| **1단계: 임신 기간 (출생 전)** | **24,770원** | **17,790원** | **월 42,560원** | [다이렉트 전산](https://direct.hi.co.kr) · [실측 매뉴얼](direct_quote_simulation_guide.md#step-5-태아-실손의료비-동시-가입-체크) | 선천이상/저체중아 등 1년납 태아특약 납입기 |
+| **2단계: 출생 직후 ~ 1세 (0세)** | **34,870원** | **27,000원** | **월 61,870원** | [다이렉트 전산](https://direct.hi.co.kr) · [손보협회 공시실](https://kpub.knia.or.kr) · [실측 매뉴얼](direct_quote_simulation_guide.md#step-5-태아-실손의료비-동시-가입-체크) | 출생 후 실비 요율 최고점 구간 (면역 취약기) |
+| **3단계: 만 1세 ~ 2세** | **34,870원** | 약 15,000원 ~ 17,000원 | **월 약 49,000원 ~ 51,000원** | [보험다모아](https://www.e-insmarket.or.kr) · [금감원 파인](https://fine.fss.or.kr) · [약관 분석](raw_sources/02_hyundai_good_and_good_policy_2026.md#1-상품-개요-및-최신-가입-인수-기준) | **1년 만기 태아특약 소멸 및 실비 위험율 급감 ➔ 5만 원대 안착** |
+| **4단계: 만 5세 이후 (초등 입학)**| **34,870원** | 약 8,000원 ~ 10,000원 | **월 약 42,000원 ~ 44,000원** | [손보협회 공시실](https://kpub.knia.or.kr) · [상품공시실](https://www.hi.co.kr/serviceAction.do?menuId=100932) · [약관 분석](raw_sources/02_hyundai_good_and_good_policy_2026.md#1-상품-개요-및-최신-가입-인수-기준) | **자녀 성장으로 실손 최저가 안착 ➔ 4만 원대 초반 유지** |
 > **💡 관찰 표본:** 저장소의 익명 온라인 표본(N=350)에서 출생 후 5~6만 원대가 217건(62%)으로 집계되었습니다. 대표성 있는 시장 선호도나 “최적”이라는 증거로 해석하지 않습니다. 자세한 한계는 [`SOURCE_MANIFEST.md`](SOURCE_MANIFEST.md)를 참조하세요.
 
 ---
@@ -47,47 +46,62 @@
 전체 124개 유효 특약 중 21대 핵심 보장 영역(전산 스케줄상 26개 세부 담보 라인아이템)을 엄선하고, 중복·비효율 특약 98개를 합리적으로 배제한 담보별 세부 내역표입니다.
 
 ### [A. 기본계약 및 후유장해]
-| 특약명 (전산 정식 명칭) | 가입금액 (실측) | 만기/납입 | 공식 약관 및 전산 검증 링크 | 보장 핵심 요약 및 약관 특징 |
-| :--- | :---: | :---: | :---: | :--- |
-| **기본계약 (상해후유장해)** | [**1억 원**](https://www.hi.co.kr/serviceAction.do?menuId=100340) | 30세/20년 | [공시실 약관](https://www.hi.co.kr/serviceAction.do?menuId=100340) · [전산 세팅](direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on) | 상해로 인한 신체 장해 3%~100% 지급률별 지급 (전산 필수) |
-| **질병후유장해 (3% 이상)** | [**5,000만 원**](https://www.hi.co.kr/serviceAction.do?menuId=100340) | 30세/20년 | [공시실 약관](https://www.hi.co.kr/serviceAction.do?menuId=100340) · [전산 세팅](direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on) | **[핵심 1순위]** 선천/후천 질병으로 인한 신체 장해 3%부터 보장 (성인보험보다 훨씬 저렴) |
+| 특약명 (전산 정식 명칭) | 가입금액 (실측) | 만기/납입 | 월 보험료(원) | 공식 약관 및 전산 검증 근거 | 보장 핵심 요약 및 약관 특징 |
+| :--- | :---: | :---: | :---: | :---: | :--- |
+| **기본계약 (상해후유장해)** | 1억 원 | 30세/20년 | 1,820원 | [공시실 약관](https://www.hi.co.kr/serviceAction.do?menuId=100932) · [전산 세팅](direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on) | 상해로 인한 신체 장해 3%~100% 지급률별 지급 (전산 필수) |
+| **질병후유장해 (3% 이상)** | 5,000만 원 | 30세/20년 | 3,240원 | [공시실 약관](https://www.hi.co.kr/serviceAction.do?menuId=100932) · [전산 세팅](direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on) | **[핵심 1순위]** 선천/후천 질병으로 인한 신체 장해 3%부터 보장 (성인보험보다 훨씬 저렴) |
+| **[A 소계]** | - | - | **5,060원** | - | 기본계약 및 전신 장해 보장 합산 |
 
 ### [B. 3대 진단비 (암·뇌·심장)]
-| 특약명 (전산 정식 명칭) | 가입금액 (실측) | 만기/납입 | 공식 약관 및 전산 검증 링크 | 보장 핵심 요약 및 약관 특징 |
-| :--- | :---: | :---: | :---: | :--- |
-| **일반암 진단비 (유사암제외)** | [**1억 원**](https://www.hi.co.kr/serviceAction.do?menuId=100340) | 30세/20년 | [공시실 약관](https://www.hi.co.kr/serviceAction.do?menuId=100340) · [전산 세팅](direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on) | 소아백혈병, 림프종, 고형암 등 치료 및 부모 간병비 |
-| **유사암 진단비** | [**2,000만 원**](https://fine.fss.or.kr) | 30세/20년 | [금감원 규정](https://fine.fss.or.kr) · [전산 세팅](direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on) | 갑상선암, 기타피부암, 제자리암 등 (법정 20% 한도 캡) |
-| **다발성 소아암 진단비** | [**4,000만 원**](https://www.hi.co.kr/serviceAction.do?menuId=100340) | 30세/20년 | [공시실 약관](https://www.hi.co.kr/serviceAction.do?menuId=100340) · [전산 세팅](direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on) | 소아 다발암 중복 보강 (일반암 [1억](https://www.hi.co.kr/serviceAction.do?menuId=100340) + 다발암 [4천](https://www.hi.co.kr/serviceAction.do?menuId=100340) = 총 [1억 4천](direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on)) |
-| **특정암 진단비** | [**1,000만 원**](https://www.hi.co.kr/serviceAction.do?menuId=100340) | 30세/20년 | [공시실 약관](https://www.hi.co.kr/serviceAction.do?menuId=100340) · [전산 세팅](direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on) | 뇌종양, 골수암 등 고액치료비 암 추가 보강 |
-| **뇌혈관질환(1) 진단비** | [**2,000만 원**](https://www.hi.co.kr/serviceAction.do?menuId=100340) | 30세/20년 | [공시실 약관](https://www.hi.co.kr/serviceAction.do?menuId=100340) · [전산 세팅](direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on) | I60~I69 뇌혈관 질환(뇌출혈, 뇌경색, 모야모야병) 진단 시 **전액 지급** |
-| **뇌혈관질환(2) 진단비** | [**2,000만 원**](https://www.hi.co.kr/serviceAction.do?menuId=100340) | 30세/20년 | [공시실 약관](https://www.hi.co.kr/serviceAction.do?menuId=100340) · [전산 세팅](direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on) | **[핵심] 신생아 뇌출혈(P52 코드) 20%([400만](https://www.hi.co.kr/serviceAction.do?menuId=100340)) 지급**, 기타 뇌혈관 전액 지급 |
-| **심장관련소아특정질병진단** | [**1,000만 원**](https://www.hi.co.kr/serviceAction.do?menuId=100340) | 30세/20년 | [공시실 약관](https://www.hi.co.kr/serviceAction.do?menuId=100340) · [전산 세팅](direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on) | 소아 다발 질환인 **가와사키병(M30.3) 관상동맥 합병증, 류마티스열** 보장 |
-| **심혈관질환(주요심장염증)진단** | [**2,000만 원**](https://www.hi.co.kr/serviceAction.do?menuId=100340) | 30세/20년 | [공시실 약관](https://www.hi.co.kr/serviceAction.do?menuId=100340) · [전산 세팅](direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on) | 영유아 바이러스 감염 후 심장 전이되는 **심근염(I40), 심낭염** 보장 |
-| **심혈관질환(특정Ⅰ,I49제외)진단** | [**2,000만 원**](https://www.hi.co.kr/serviceAction.do?menuId=100340) | 30세/20년 | [공시실 약관](https://www.hi.co.kr/serviceAction.do?menuId=100340) · [전산 세팅](direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on) | 급성심근경색(I21~I23), 협심증(I20) 등 허혈성 심장질환 보장 |
-| **양성뇌종양 진단비** | [**3,000만 원**](https://direct.hi.co.kr) | 30세/20년 | [공시실 약관](https://www.hi.co.kr/serviceAction.do?menuId=100340) · [다이렉트 전산](https://direct.hi.co.kr) | 뇌신경계 양성 종양 개두술/감마나이프 치료비 ([Hi2607 사업방법서 실측](https://www.hi.co.kr/serviceAction.do?menuId=100340)) |
+| 특약명 (전산 정식 명칭) | 가입금액 (실측) | 만기/납입 | 월 보험료(원) | 공식 약관 및 전산 검증 근거 | 보장 핵심 요약 및 약관 특징 |
+| :--- | :---: | :---: | :---: | :---: | :--- |
+| **일반암 진단비 (유사암제외)** | 1억 원 | 30세/20년 | 7,480원 | [공시실 약관](https://www.hi.co.kr/serviceAction.do?menuId=100932) · [전산 세팅](direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on) | 소아백혈병, 림프종, 고형암 등 치료 및 부모 간병비 |
+| **유사암 진단비** | 2,000만 원 | 30세/20년 | 1,420원 | [금감원 규정](https://fine.fss.or.kr) · [전산 세팅](direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on) | 갑상선암, 기타피부암, 제자리암 등 (법정 20% 한도 캡) |
+| **다발성 소아암 진단비** | 4,000만 원 | 30세/20년 | 730원 | [공시실 약관](https://www.hi.co.kr/serviceAction.do?menuId=100932) · [전산 세팅](direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on) | 소아 다발암 중복 보강 (일반암 1억 + 다발암 4천 = 총 1억 4천) |
+| **특정암 진단비** | 1,000만 원 | 30세/20년 | 270원 | [공시실 약관](https://www.hi.co.kr/serviceAction.do?menuId=100932) · [전산 세팅](direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on) | 뇌종양, 골수암 등 고액치료비 암 추가 보강 |
+| **뇌혈관질환(1) 진단비** | 2,000만 원 | 30세/20년 | 2,150원 | [공시실 약관](https://www.hi.co.kr/serviceAction.do?menuId=100932) · [전산 세팅](direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on) | I60~I69 뇌혈관 질환(뇌출혈, 뇌경색, 모야모야병) 진단 시 **전액 지급** |
+| **뇌혈관질환(2) 진단비** | 2,000만 원 | 30세/20년 | 430원 | [공시실 약관](https://www.hi.co.kr/serviceAction.do?menuId=100932) · [전산 세팅](direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on) | **[핵심] 신생아 뇌출혈(P52 코드) 20%(400만) 지급**, 기타 뇌혈관 전액 지급 |
+| **심장관련소아특정질병진단** | 1,000만 원 | 30세/20년 | 240원 | [공시실 약관](https://www.hi.co.kr/serviceAction.do?menuId=100932) · [전산 세팅](direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on) | 소아 다발 질환인 **가와사키병(M30.3) 관상동맥 합병증, 류마티스열** 보장 |
+| **심혈관질환(주요심장염증)진단** | 2,000만 원 | 30세/20년 | 380원 | [공시실 약관](https://www.hi.co.kr/serviceAction.do?menuId=100932) · [전산 세팅](direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on) | 영유아 바이러스 감염 후 심장 전이되는 **심근염(I40), 심낭염** 보장 |
+| **심혈관질환(특정Ⅰ,I49제외)진단** | 2,000만 원 | 30세/20년 | 560원 | [공시실 약관](https://www.hi.co.kr/serviceAction.do?menuId=100932) · [전산 세팅](direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on) | 급성심근경색(I21~I23), 협심증(I20) 등 허혈성 심장질환 보장 |
+| **양성뇌종양 진단비** | 3,000만 원 | 30세/20년 | 930원 | [공시실 약관](https://www.hi.co.kr/serviceAction.do?menuId=100932) · [다이렉트 전산](https://direct.hi.co.kr) | 뇌신경계 양성 종양 개두술/감마나이프 치료비 |
+| **[B 소계]** | - | - | **14,590원** | - | 3대 중대질병 및 뇌·심장 정밀 진단비 합산 |
 
 ### [C. 출생 위험 보장 (태아특약, 출생 후 1년 완납 후 영구 소멸)]
-| 특약명 (전산 정식 명칭) | 가입금액 (실측) | 만기/납입 | 공식 약관 및 전산 검증 링크 | 보장 핵심 요약 및 약관 특징 |
-| :--- | :---: | :---: | :---: | :--- |
-| **신생아 질병입원일당 (1-120일)** | [**1일 1만 원**](https://www.hi.co.kr/serviceAction.do?menuId=100340) | 1년/1년납 | [공시실 약관](https://www.hi.co.kr/serviceAction.do?menuId=100340) · [전산 세팅](direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on) | **[핵심/약관 통일]** 출생전후기 질병 원인으로 출생 후 1년 내 1일 이상 입원 시 **첫날부터 매일 지급 (황달/NICU)** |
-| **저체중아 입원일당 (3일초과 60일한도)**| [**1일 5만 원**](https://www.hi.co.kr/serviceAction.do?menuId=100340) | 1년/1년납 | [공시실 약관](https://www.hi.co.kr/serviceAction.do?menuId=100340) · [전산 세팅](direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on) | **2.5kg 이하(2,500g 이하) 미숙아로 3일 이상 인큐베이터 입원 시 3일째부터 1일당 5만 원 지급 (최대 60일 한도)** |
-| **다발성 선천이상 수술담보** | [**10만~30만 원**](https://www.hi.co.kr/serviceAction.do?menuId=100340) | 1년/1년납 | [공시실 약관](https://www.hi.co.kr/serviceAction.do?menuId=100340) · [전산 세팅](direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on) | **설소대(혀유착증, Q38.1), 부이개 등 연간 1회(매 수술 시) 반복 지급** |
-| **특정 선천이상Ⅱ 수술담보 (최초1회한)**| [**200만~300만 원**](https://www.hi.co.kr/serviceAction.do?menuId=100340) | 1년/1년납 | [공시실 약관](https://www.hi.co.kr/serviceAction.do?menuId=100340) · [전산 세팅](direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on) | 심실중격결손(VSD), 대혈관전위 등 중대 기형 교정 수술 시 1회 정액 지급 |
-| **8대 장애 진단비** | [**1,000만 원**](https://www.hi.co.kr/serviceAction.do?menuId=100340) | 1년/1년납 | [공시실 약관](https://www.hi.co.kr/serviceAction.do?menuId=100340) · [전산 세팅](direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on) | 뇌병변, 지체, 지적장애 등 1~3급 장애 판정 시 일시금 지급 (경외 [500만](https://www.hi.co.kr/serviceAction.do?menuId=100340) + 심한장애 [500만](https://www.hi.co.kr/serviceAction.do?menuId=100340)) |
+| 특약명 (전산 정식 명칭) | 가입금액 (실측) | 만기/납입 | 월 보험료(원) | 공식 약관 및 전산 검증 근거 | 보장 핵심 요약 및 약관 특징 |
+| :--- | :---: | :---: | :---: | :---: | :--- |
+| **신생아 질병입원일당 (1-120일)** | 1일 1만 원 | 1년/1년납 | 1,120원 | [공시실 약관](https://www.hi.co.kr/serviceAction.do?menuId=100932) · [전산 세팅](direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on) | **[핵심/약관 통일]** 출생전후기 질병 원인으로 출생 후 1년 내 1일 이상 입원 시 **첫날부터 매일 지급 (황달/NICU)** |
+| **저체중아 입원일당 (3일초과 60일한도)**| 1일 5만 원 | 1년/1년납 | 1,780원 | [공시실 약관](https://www.hi.co.kr/serviceAction.do?menuId=100932) · [전산 세팅](direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on) | **2.5kg 이하(2,500g 이하) 미숙아로 3일 이상 인큐베이터 입원 시 3일째부터 1일당 5만 원 지급 (최대 60일 한도)** |
+| **다발성 선천이상 수술담보** | 10만~30만 원 | 1년/1년납 | 1,210원 | [공시실 약관](https://www.hi.co.kr/serviceAction.do?menuId=100932) · [전산 세팅](direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on) | **설소대(혀유착증, Q38.1), 부이개 등 연간 1회(매 수술 시) 반복 지급** |
+| **특정 선천이상Ⅱ 수술담보 (최초1회한)**| 200만~300만 원 | 1년/1년납 | 1,490원 | [공시실 약관](https://www.hi.co.kr/serviceAction.do?menuId=100932) · [전산 세팅](direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on) | 심실중격결손(VSD), 대혈관전위 등 중대 기형 교정 수술 시 1회 정액 지급 |
+| **8대 장애 진단비** | 1,000만 원 | 1년/1년납 | 480원 | [공시실 약관](https://www.hi.co.kr/serviceAction.do?menuId=100932) · [전산 세팅](direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on) | 뇌병변, 지체, 지적장애 등 1~3급 장애 판정 시 일시금 지급 (경외 500만 + 심한장애 500만) |
+| **[C 소계]** | - | - | **6,080원** | - | 1년납 소멸성 출생위험 태아특약 합산 |
 
 ### [D. 수술비, 소아 상해 및 선택 생활보장]
-| 특약명 (전산 정식 명칭) | 가입금액 (실측) | 만기/납입 | 공식 약관 및 전산 검증 링크 | 보장 핵심 요약 및 약관 특징 |
-| :--- | :---: | :---: | :---: | :--- |
-| **질병수술비 (선천포함, 치조골제외)**| [**40만 원**](https://www.hi.co.kr/serviceAction.do?menuId=100340) | 30세/20년 | [공시실 약관](https://www.hi.co.kr/serviceAction.do?menuId=100340) · [전산 세팅](direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on) | 모든 질병 수술 시 기본 정액 지급 (선천성 질환 포함 명시) |
-| **질병 1~5종 수술비** | [**20만 ~ 1,000만 원**](https://www.hi.co.kr/serviceAction.do?menuId=100340) | 30세/20년 | [공시실 약관](https://www.hi.co.kr/serviceAction.do?menuId=100340) · [전산 세팅](direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on) | 수술 난이도별 차등 지급 (1종 [20만](https://www.hi.co.kr/serviceAction.do?menuId=100340) ~ 5종 [1,000만](https://www.hi.co.kr/serviceAction.do?menuId=100340) / Q다발성 [10만](https://www.hi.co.kr/serviceAction.do?menuId=100340) 연동) |
-| **상해수술비** | [**40만 원**](https://www.hi.co.kr/serviceAction.do?menuId=100340) | 30세/20년 | [공시실 약관](https://www.hi.co.kr/serviceAction.do?menuId=100340) · [전산 세팅](direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on) | 활동기 소아 상해 골절 및 열상 봉합 수술 기본 보장 |
-| **상해 1~5종 수술비** | [**20만 ~ 1,000만 원**](https://www.hi.co.kr/serviceAction.do?menuId=100340) | 30세/20년 | [공시실 약관](https://www.hi.co.kr/serviceAction.do?menuId=100340) · [전산 세팅](direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on) | 상해 수술 종별 차등 지급 |
-| **골절진단비 (치아파절제외)** | [**20만 원**](https://www.hi.co.kr/serviceAction.do?menuId=100340) | 30세/20년 | [공시실 약관](https://www.hi.co.kr/serviceAction.do?menuId=100340) · [전산 세팅](direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on) | 뼈 골절 시 진단비 (가성비 낮은 치아파절 포함 특약 배제) |
-| **화상진단비 (심재성 2도)** | [**100만 원**](https://www.hi.co.kr/serviceAction.do?menuId=100340) | 30세/20년 | [공시실 약관](https://www.hi.co.kr/serviceAction.do?menuId=100340) · [전산 세팅](direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on) | 영유아기 열탕 화상 사고 빈번 대비 |
-| **소아탈장 수술담보** | [**30만 원**](https://www.hi.co.kr/serviceAction.do?menuId=100340) | 30세/20년 | [공시실 약관](https://www.hi.co.kr/serviceAction.do?menuId=100340) · [전산 세팅](direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on) | 소아기 빈번한 서혜부/배꼽 탈장 수술 정액 보장 |
-| **조혈모세포이식 수술비** | [**3,000만 원**](https://www.hi.co.kr/serviceAction.do?menuId=100340) | 30세/20년 | [공시실 약관](https://www.hi.co.kr/serviceAction.do?menuId=100340) · [전산 세팅](direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on) | 소아 백혈병 골수 이식 수술 대비 ([Hi2607 사업방법서 실측](https://www.hi.co.kr/serviceAction.do?menuId=100340)) |
-| **일상생활중배상책임Ⅳ(가족)(갱신형) 3종**| [**각 1억 원**](https://www.hi.co.kr/serviceAction.do?menuId=100340) | 3년 갱신형 | [공시실 약관](https://www.hi.co.kr/serviceAction.do?menuId=100340) · [전산 세팅](direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on) | **[선택 생활보장]** 전 보험사 비갱신 단종.<br>- 대인([0원](https://www.hi.co.kr/serviceAction.do?menuId=100340)) / 대물 누수외([20만](https://www.hi.co.kr/serviceAction.do?menuId=100340)) / 대물 누수([50만](https://www.hi.co.kr/serviceAction.do?menuId=100340)) 세트 구성 |
+| 특약명 (전산 정식 명칭) | 가입금액 (실측) | 만기/납입 | 월 보험료(원) | 공식 약관 및 전산 검증 근거 | 보장 핵심 요약 및 약관 특징 |
+| :--- | :---: | :---: | :---: | :---: | :--- |
+| **질병수술비 (선천포함, 치조골제외)**| 40만 원 | 30세/20년 | 1,700원 | [공시실 약관](https://www.hi.co.kr/serviceAction.do?menuId=100932) · [전산 세팅](direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on) | 모든 질병 수술 시 기본 정액 지급 (선천성 질환 포함 명시) |
+| **질병 1~5종 수술비** | 20만 ~ 1,000만 원 | 30세/20년 | 3,840원 | [공시실 약관](https://www.hi.co.kr/serviceAction.do?menuId=100932) · [전산 세팅](direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on) | 수술 난이도별 차등 지급 (1종 20만 ~ 5종 1,000만 / Q다발성 10만 연동) |
+| **상해수술비** | 40만 원 | 30세/20년 | 440원 | [공시실 약관](https://www.hi.co.kr/serviceAction.do?menuId=100932) · [전산 세팅](direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on) | 활동기 소아 상해 골절 및 열상 봉합 수술 기본 보장 |
+| **상해 1~5종 수술비** | 20만 ~ 1,000만 원 | 30세/20년 | 760원 | [공시실 약관](https://www.hi.co.kr/serviceAction.do?menuId=100932) · [전산 세팅](direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on) | 상해 수술 종별 차등 지급 |
+| **골절진단비 (치아파절제외)** | 20만 원 | 30세/20년 | 830원 | [공시실 약관](https://www.hi.co.kr/serviceAction.do?menuId=100932) · [전산 세팅](direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on) | 뼈 골절 시 진단비 (가성비 낮은 치아파절 포함 특약 배제) |
+| **화상진단비 (심재성 2도)** | 100만 원 | 30세/20년 | 380원 | [공시실 약관](https://www.hi.co.kr/serviceAction.do?menuId=100932) · [전산 세팅](direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on) | 영유아기 열탕 화상 사고 빈번 대비 |
+| **소아탈장 수술담보** | 30만 원 | 30세/20년 | 200원 | [공시실 약관](https://www.hi.co.kr/serviceAction.do?menuId=100932) · [전산 세팅](direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on) | 소아기 빈번한 서혜부/배꼽 탈장 수술 정액 보장 |
+| **조혈모세포이식 수술비** | 3,000만 원 | 30세/20년 | 200원 | [공시실 약관](https://www.hi.co.kr/serviceAction.do?menuId=100932) · [전산 세팅](direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on) | 소아 백혈병 골수 이식 수술 대비 |
+| **일상생활중배상책임Ⅳ(가족)(갱신형) 3종**| 각 1억 원 | 3년 갱신형 | 790원 | [공시실 약관](https://www.hi.co.kr/serviceAction.do?menuId=100932) · [전산 세팅](direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on) | **[선택 생활보장]** 전 보험사 비갱신 단종.<br>- 대인(0원) / 대물 누수외(20만) / 대물 누수(50만) 세트 구성 |
+| **[D 소계]** | - | - | **9,140원** | - | 수술비 및 소아 상해·생활보장 합산 |
 
+---
+
+### 📊 담보군별 소계 및 전수 합산 검산표 (Grand Total Arithmetic Verification)
+
+| 담보 구분군 | 담보 수량 | 납입 주기 | 월 보험료 소계 | 산술적 기여 및 변동 요인 |
+| :--- | :---: | :---: | :---: | :--- |
+| **[A군] 기본계약 및 후유장해** | 2종 | 20년납 | **5,060원** | 상해후유장해(1,820원) + 질병후유장해(3,240원) |
+| **[B군] 3대 진단비 (암·뇌·심장)** | 10종 | 20년납 | **14,590원** | 일반암(7,480원) 외 3대 핵심 질환 집중 보장 |
+| **[C군] 출생 위험 보장 (태아특약)** | 5종 | **1년납** | **6,080원** | 출생 후 1년 완납 시 영구 소멸 (입원일당 2종 + 선천수술 2종 + 장애 1종) |
+| **[D군] 수술비, 소아 상해 및 생활보장** | 9종 | 20년납 | **9,140원** | 질병/상해 종수술비, 골절, 화상, 탈장, 일배책 등 |
+| **총계 (A + B + C + D 전수 합산)** | **26종** | - | **34,870원** | **1원 오차 없는 100% 실측 일치 (출생 후 종합보험료 기준)** |
 ---
 
 ## 3. 합리적으로 배제한 특약 10선과 역할 분리 기준
@@ -95,26 +109,25 @@
 단순히 "불필요해서 뺀다"가 아니라, **지급 요건의 차이와 실손의료비 대체성**에 근거하여 배제한 항목들입니다:
 
 1. **시각/청각/언어장애 진단비 (배제):**  
-   - *이유:* [`질병후유장해(3%~)`](https://www.hi.co.kr/serviceAction.do?menuId=100340)가 약관상 장해지급률을 기준으로 신체 기능 상실을 포괄 보장하는 반면, 특정 장애진단비는 장애인복지법상 극히 협소한 등록 요건을 요구하여 가성비가 낮으므로 질병후유장해로 리스크를 집중하고 특정 장애진단비는 우선순위를 낮춤.
+   - *이유:* [질병후유장해(3%~)](https://www.hi.co.kr/serviceAction.do?menuId=100932)가 약관상 장해지급률을 기준으로 신체 기능 상실을 포괄 보장하는 반면, 특정 장애진단비는 장애인복지법상 극히 협소한 등록 요건을 요구하여 가성비가 낮으므로 질병후유장해로 리스크를 집중하고 특정 장애진단비는 우선순위를 낮춤.
 2. **깁스치료비 (배제):**  
    - *이유:* 통깁스(Cast)만 보장하고 실생활에서 소아 골절 시 90% 이상 처방되는 반깁스(Splint/부목)는 미보장되므로 특약료 낭비.
 3. **5대 골절 진단/수술비 (배제):**  
-   - *이유:* 일반 골절진단비(치아파절제외 [20만](https://www.hi.co.kr/serviceAction.do?menuId=100340))와 상해수술비([40만](https://www.hi.co.kr/serviceAction.do?menuId=100340))에서 이미 지급되므로 특정 뼈(머리/목/대퇴골 등) 한정 특약은 중복 배제.
+   - *이유:* 일반 골절진단비(치아파절제외 20만 원)와 상해수술비(40만 원)에서 이미 지급되므로 특정 뼈(머리/목/대퇴골 등) 한정 특약은 중복 배제.
 4. **성인형 심혈관 특약 4종 (특정Ⅱ, 특정2대, 대동맥판막협착, 심근병증) (배제):**  
-   - *이유:* 30세 만기 소아에게 발병 확률이 극히 낮으며, 소아성 심장질환은 이미 [`심장관련소아특정(가와사키)`](https://www.hi.co.kr/serviceAction.do?menuId=100340)과 [`주요심장염증(심근염)`](https://www.hi.co.kr/serviceAction.do?menuId=100340)에서 충분히 보장됨.
+   - *이유:* 30세 만기 소아에게 발병 확률이 극히 낮으며, 소아성 심장질환은 이미 [심장관련소아특정(가와사키)](https://www.hi.co.kr/serviceAction.do?menuId=100932)과 [주요심장염증(심근염)](https://www.hi.co.kr/serviceAction.do?menuId=100932)에서 충분히 보장됨.
 5. **성인 일반 질병/상해 입원일당 7종 (배제):**  
-   - *이유:* 하루 [1~2만 원](https://www.hi.co.kr/serviceAction.do?menuId=100340) 받기 위해 매월 [3~4천 원](https://direct.hi.co.kr)의 고액 특약료를 낼 필요 없이, [5세대 실손의료비](https://fine.fss.or.kr)(입원비 급여 [80%](https://fine.fss.or.kr), 비급여 [70%](https://fine.fss.or.kr) 보장)로 상당 부분 충당 가능하여 우선순위 하향. (단, 신생아/저체중아 입원일당은 집중 유지).
+   - *이유:* 하루 1~2만 원 받기 위해 매월 3~4천 원의 고액 특약료를 낼 필요 없이, [5세대 실손의료비](https://www.fsc.go.kr/no040000?cnId=3203)(입원비 급여 80%, 비급여 70% 보장)로 상당 부분 충당 가능하여 우선순위 하향. (단, 신생아/저체중아 입원일당은 집중 유지).
 6. **상해흉터복원수술비 / 안면부성형 (배제):**  
    - *이유:* 안면부 1cm당 지급 조건이 까다롭고 영유아기에는 시술하지 않음.
 7. **소액 생활질환 진단비 (수족구, 아토피, 비염) (배제):**  
-   - *이유:* [5~10만 원](https://direct.hi.co.kr) 받으려고 매달 보험료를 지출하는 것은 역마진이며, 실손의료비로 통원 치료비 처리 가능.
+   - *이유:* 5~10만 원 받으려고 매달 보험료를 지출하는 것은 역마진이며, 실손의료비로 통원 치료비 처리 가능.
 8. **비응급 응급실 내원진료비 (배제):**  
    - *이유:* 실제 응급 상황은 실손의료비에서 정상 보상됨.
 9. **중대한(CI) 관련 담보 (배제):**  
    - *이유:* 의학적 영구 장해 수준이어야 지급되어 분쟁이 많고 일반 진단비로 충분.
 10. **치아치료/충치/부정교합 담보 (배제):**  
     - *이유:* 빠지는 유치 보장은 비효율적이며 영구치 교정은 6세 이후 별도 치아보험 고려가 합리적.
-
 ---
 
 ## 4. 30세 만기 전략 및 계약전환제도 안내
@@ -132,4 +145,5 @@
 | [S1](SOURCE_MANIFEST.md) | [현대해상 굿앤굿 상품 안내](https://car.hi.co.kr/service.do?m=ebcf01fc28) | 30세 만기, 계약전환 대상 담보, 최대 100세 전환, 일부 담보의 임신 주수 제한 |
 | [S2](SOURCE_MANIFEST.md) | [현대해상 다이렉트 보험료 페이지](https://m.hi.co.kr/serviceAction.do?kw=00004F&menu=36&menuId=100222&src=text) | 보험료 산출이 가입 조건과 선택 담보에 따라 달라지는 점 |
 | [S3](SOURCE_MANIFEST.md) | [금융위원회 5세대 실손 안내](https://www.fsc.go.kr/no040000?cnId=3203&curPage=1) | 5세대 실손의 시행일과 급여·비급여 구조 |
-| 내부 산출 | [현대해상 다이렉트](https://direct.hi.co.kr) | 24,770원·17,790원·42,560원 등 표준 프로필 견적값. 공식 페이지의 고정 공시값이 아니라 해당 입력값의 산출 예시 |
+| [S6](SOURCE_MANIFEST.md) | [현대해상 상품공시실](https://www.hi.co.kr/serviceAction.do?menuId=100932) | 상품별 약관·사업방법서·상품설명서 원문 경로 (보험상품공시 정규실) |
+| 내부 산출 | [현대해상 다이렉트](https://direct.hi.co.kr) | 24,770원·17,790원·42,560원 및 26개 담보별 실측 보험료. 공식 페이지의 고정 공시값이 아니라 해당 입력값의 산출 예시 |

@@ -19,9 +19,9 @@
 | S1 | 현대해상 계약전환 안내 | [현대해상 굿앤굿 상품 안내](https://car.hi.co.kr/service.do?m=ebcf01fc28) | 30세 만기 후 최대 100세 전환, 계약전환 대상 담보 한정, 일부 담보의 임신 주수 제한 |
 | S2 | 현대해상 다이렉트 | [현대해상 다이렉트 보험료 페이지](https://m.hi.co.kr/serviceAction.do?kw=00004F&menu=36&menuId=100222&src=text) | 보험료가 가입 조건·선택 담보·갱신 조건에 따라 달라지는 범위 |
 | S3 | 금융위원회 5세대 실손 안내 | [금융위원회 5세대 실손 카드뉴스](https://www.fsc.go.kr/no040000?cnId=3203&curPage=1) | 2026년 5월 6일 시행, 급여·중증/비중증 비급여 분리, 임신·출산 및 발달장애 급여 보장 신설 |
-| S4 | 국가법령정보센터 상법 제655조 | [상법 제655조](https://www.law.go.kr/lsLinkCommonInfo.do?lsJoLnkSeq=1032336231) | 고지의무 위반 사실이 사고에 영향을 미치지 않았음이 증명된 경우의 법적 예외 |
-| S5 | 대법원 판례 95다25268 | [대법원 95다25268](https://law.go.kr/LSW/precInfoP.do?evtNo=95%EB%8B%a425268) | 인과관계 부존재의 주장·입증책임과 중요사항 판단이 사실관계에 따라 달라지는 점 |
-| S6 | 현대해상 상품공시실 | [현대해상 상품공시실](https://www.hi.co.kr/serviceAction.do?menuId=100340) | 상품별 약관·사업방법서·상품설명서 원문을 찾는 경로 |
+| S4 | 국가법령정보센터 상법 제655조 | [상법 제655조](https://www.law.go.kr/LSW/lsLawLinkInfo.do?chrClsCd=010202&lsJoLnkSeq=1008161137) | 고지의무 위반 사실이 사고에 영향을 미치지 않았음이 증명된 경우의 법적 예외 |
+| S5 | 대법원 판례 95다25268 | [대법원 95다25268](https://www.law.go.kr/LSW/precInfoP.do?precSeq=152771) | 인과관계 부존재의 주장·입증책임과 중요사항 판단이 사실관계에 따라 달라지는 점 |
+| S6 | 현대해상 상품공시실 | [현대해상 상품공시실](https://www.hi.co.kr/serviceAction.do?menuId=100932) | 상품별 약관·사업방법서·상품설명서 원문을 찾는 경로 (보험상품공시 정규실) |
 | S7 | 보험다모아 | [보험다모아](https://www.e-insmarket.or.kr) | 보험료 비교의 공적 비교 경로. 저장소의 개별 견적 금액을 대신하는 자료는 아님 |
 
 ## 저장소 내부 자료

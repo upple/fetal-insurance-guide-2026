@@ -64,9 +64,9 @@
 
 | 출처명 | 링크 (URL) | 정보 유형 및 검증 내용 |
 | :--- | :--- | :--- |
-| **현대해상 상품공시실** | [hi.co.kr 공시실](https://www.hi.co.kr/serviceAction.do?menuId=100340) | 굿앤굿어린이종합보험Q(Hi2607) 표준약관, 사업방법서, 상품요약서 공식 공시 |
+| **현대해상 상품공시실** | [hi.co.kr 공시실](https://www.hi.co.kr/serviceAction.do?menuId=100932) | 굿앤굿어린이종합보험Q(Hi2607) 표준약관, 사업방법서, 상품요약서 공식 공시 |
 | **현대해상 다이렉트 굿앤굿** | [direct.hi.co.kr](https://direct.hi.co.kr) | 2026년 최신 Hi2607 다이렉트 실시간 견적 엔진 및 패키지 구조 |
 | **보험다모아 (금융당국 공시)** | [e-insmarket.or.kr](https://www.e-insmarket.or.kr) | 손해보험협회 주관 태아보험 객관적 가격지수 및 보장 비교 |
 | **금융소비자정보포털 파인** | [fine.fss.or.kr](https://fine.fss.or.kr) | 금융감독원 5세대 실손 및 표준약관 가이드 |
 
-출처 조회 기준일: **2026-10-06**. 상품 구조·계약전환·가입 주수는 [S1 현대해상 굿앤굿 상품 안내](https://car.hi.co.kr/service.do?m=ebcf01fc28)와 [S6 현대해상 상품공시실](https://www.hi.co.kr/serviceAction.do?menuId=100340)을 기준으로 대조했고, 개별 보험료는 [S2 현대해상 다이렉트 보험료 페이지](https://m.hi.co.kr/serviceAction.do?kw=00004F&menu=36&menuId=100222&src=text)의 동적 산출값으로 취급합니다.
+출처 조회 기준일: **2026-10-06**. 상품 구조·계약전환·가입 주수는 [S1 현대해상 굿앤굿 상품 안내](https://car.hi.co.kr/service.do?m=ebcf01fc28)와 [S6 현대해상 상품공시실](https://www.hi.co.kr/serviceAction.do?menuId=100932)을 기준으로 대조했고, 개별 보험료는 [S2 현대해상 다이렉트 보험료 페이지](https://m.hi.co.kr/serviceAction.do?kw=00004F&menu=36&menuId=100222&src=text)의 동적 산출값으로 취급합니다.

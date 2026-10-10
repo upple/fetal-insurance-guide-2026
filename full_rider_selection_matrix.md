@@ -275,5 +275,5 @@ erDiagram
 | --- | --- | --- |
 | [S1](SOURCE_MANIFEST.md) | [현대해상 굿앤굿 상품 안내](https://car.hi.co.kr/service.do?m=ebcf01fc28) | 상품의 보장 영역, 일부 담보의 임신 주수 제한, 계약전환 대상 담보 |
 | [S3](SOURCE_MANIFEST.md) | [금융위원회 5세대 실손 안내](https://www.fsc.go.kr/no040000?cnId=3203&curPage=1) | 5세대 실손의 급여·중증/비중증 비급여 역할 구분 |
-| [S6](SOURCE_MANIFEST.md) | [현대해상 상품공시실](https://www.hi.co.kr/serviceAction.do?menuId=100340) | 특약별 약관·사업방법서·상품설명서 원문을 찾는 공식 경로 |
+| [S6](SOURCE_MANIFEST.md) | [현대해상 상품공시실](https://www.hi.co.kr/serviceAction.do?menuId=100932) | 특약별 약관·사업방법서·상품설명서 원문을 찾는 공식 경로 |
 | 편집 판단 | [`SOURCE_MANIFEST.md`](SOURCE_MANIFEST.md) | Grade A/B/C, 가입·배제 우선순위와 예산 판단은 약관 사실에 더한 설계 편집 판단 |

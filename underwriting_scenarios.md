@@ -174,7 +174,7 @@ flowchart TD
 | ID | 참고 페이지 | 이 문서에서 뒷받침하는 내용 |
 | --- | --- | --- |
 | [S1](SOURCE_MANIFEST.md) | [현대해상 굿앤굿 상품 안내](https://car.hi.co.kr/service.do?m=ebcf01fc28) | 상품별 가입 조건, 일부 담보의 임신 주수 제한, 계약전환 대상 담보 |
-| [S4](SOURCE_MANIFEST.md) | [상법 제655조](https://www.law.go.kr/lsLinkCommonInfo.do?lsJoLnkSeq=1032336231) | 고지의무 위반과 보험사고의 인과관계가 문제 되는 법적 구조 |
-| [S5](SOURCE_MANIFEST.md) | [대법원 95다25268](https://law.go.kr/LSW/precInfoP.do?evtNo=95%EB%8B%a425268) | 인과관계 부존재의 주장·입증책임과 중요사항의 사실관계별 판단 |
+| [S4](SOURCE_MANIFEST.md) | [상법 제655조](https://www.law.go.kr/LSW/lsLawLinkInfo.do?chrClsCd=010202&lsJoLnkSeq=1008161137) | 고지의무 위반과 보험사고의 인과관계가 문제 되는 법적 구조 |
+| [S5](SOURCE_MANIFEST.md) | [대법원 95다25268](https://www.law.go.kr/LSW/precInfoP.do?precSeq=152771) | 인과관계 부존재의 주장·입증책임과 중요사항의 사실관계별 판단 |
 
 시나리오별 인수 결과·필요 서류는 보험사의 내부 심사기준과 실제 진료기록에 따라 달라지므로, 위 법적 근거가 개별 가입 결과를 보장한다는 뜻은 아닙니다.
