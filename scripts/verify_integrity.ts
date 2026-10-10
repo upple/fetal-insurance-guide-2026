@@ -706,6 +706,33 @@ check(
   finalContent.includes("direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on")
 );
 
+// Option B: Fact vs Benchmark Appendix separation checks
+check(
+  suite12,
+  "standard_50k_30yr_quote.md has explicit Appendix separation notice",
+  quoteContent.includes("별도 부록: 비공식 벤치마크 모의 견적 참고표") &&
+  quoteContent.includes("공개 웹 직접 검증 불가")
+);
+
+check(
+  suite12,
+  "optimal_prenatal_quote_final.md has explicit Appendix separation notice",
+  finalContent.includes("별도 부록: 비공식 벤치마크 모의 견적 참고표") &&
+  finalContent.includes("공개 웹 직접 검증 불가")
+);
+
+check(
+  suite12,
+  "standard_50k_30yr_quote.md top notice declares official facts vs dynamic quote separation",
+  quoteContent.includes("투명성 원칙: 100% 공식 검증 팩트와 개인별 동적 모의 견적의 엄격한 분리 고지")
+);
+
+check(
+  suite12,
+  "optimal_prenatal_quote_final.md top notice declares official facts vs dynamic quote separation",
+  finalContent.includes("투명성 원칙: 100% 공식 검증 팩트와 개인별 동적 모의 견적의 엄격한 분리 고지")
+);
+
 // Obsolete URLs strictly absent across all public docs
 for (const file of allPublicDocs) {
   const c = readFile(file);
