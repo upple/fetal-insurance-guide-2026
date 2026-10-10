@@ -1,8 +1,8 @@
 /**
- * Automated Integrity Verification Script for fetal-insurance-guide-2026 (v2.4)
+ * Automated Integrity Verification Script for fetal-insurance-guide-2026 (v2.5)
  * 
  * Verifies consistency across:
- * 1. Product version (Hi2607 across all files & unified v2.4 metadata)
+ * 1. Product version (Hi2607 across all files & unified v2.5 metadata)
  * 2. Newborn & Low Birth Weight conditions (신생아질병 1-120일 첫날부터 & 저체중아 2.5kg이하/3일이상/3일째부터)
  * 3. 5th-gen indemnity health insurance structure (급여 / 특약1 중증비급여 5천만 한도·상급종병 500만상한 / 특약2 비중증 1천만 한도·50%)
  * 4. Premium flows and mathematical precision (42,560원 -> 61,870원)
@@ -11,8 +11,9 @@
  * 7. Hi2607 July 2026 New Riders (50-1, 52-1, 85-1) in Matrix
  * 8. Dynamic Cardinality Parsing & Verification (124 unique rows, 0 duplicate IDs, 18 gaps, 7 groups)
  * 9. Elimination of Deterministic, Avoidance & Hyperbolic Phrasing
- * 10. Audit Quality Review (limitations & Failure Conditions Checklist)
+ * 10. Audit Quality Review (A- Rating & Failure Conditions Checklist)
  * 11. Source Citation Coverage (official pages named in reader-facing docs)
+ * 12. 100% Clickable Verification for All Amounts (Zero Guessing Policy & 1:1 Links)
  */
 
 import { readFileSync, existsSync } from "fs";
@@ -42,7 +43,7 @@ function readFile(relPath: string): string {
 }
 
 console.log("============================================================");
-console.log("🚀 Starting fetal-insurance-guide-2026 Automated Integrity Test (v2.4)");
+console.log("🚀 Starting fetal-insurance-guide-2026 Automated Integrity Test (v2.5)");
 console.log("============================================================\n");
 
 // ------------------------------------------------------------
@@ -75,9 +76,9 @@ const quoteContent = readFile("standard_50k_30yr_quote.md");
 const finalContent = readFile("optimal_design/optimal_prenatal_quote_final.md");
 const auditContent = readFile("audit_quality_review.md");
 
-check(suite1, "standard_50k_30yr_quote.md has unified v2.4 metadata", quoteContent.includes("v2.4"));
-check(suite1, "optimal_prenatal_quote_final.md has unified v2.4 metadata", finalContent.includes("v2.4"));
-check(suite1, "audit_quality_review.md has unified v2.4 metadata", auditContent.includes("v2.4"));
+check(suite1, "standard_50k_30yr_quote.md has unified v2.5 metadata", quoteContent.includes("v2.5"));
+check(suite1, "optimal_prenatal_quote_final.md has unified v2.5 metadata", finalContent.includes("v2.5"));
+check(suite1, "audit_quality_review.md has unified v2.5 metadata", auditContent.includes("v2.5"));
 check(suite1, "full_rider_selection_matrix.md specifies Group 3 has 13종", matrixContent.includes("제3군: 질병 입원일당 담보 (13종)"));
 
 // ------------------------------------------------------------
@@ -585,6 +586,75 @@ for (const url of [
 ]) {
   check(suite11, `SOURCE_MANIFEST.md includes ${url}`, sourceManifest.includes(url));
 }
+
+// ------------------------------------------------------------
+// Suite 11: 100% Clickable Verification for All Amounts (Zero Guessing Policy)
+// ------------------------------------------------------------
+const suite12 = "Suite 12: 100% Clickable Verification for All Amounts";
+
+const clickableAmounts = [
+  "24,770원",
+  "17,790원",
+  "42,560원",
+  "34,870원",
+  "27,000원",
+  "61,870원"
+];
+
+for (const amt of clickableAmounts) {
+  check(
+    suite12,
+    `standard_50k_30yr_quote.md has clickable link for ${amt}`,
+    quoteContent.includes(`[**${amt}**](`) || quoteContent.includes(`[${amt}](`)
+  );
+  check(
+    suite12,
+    `optimal_prenatal_quote_final.md has clickable link for ${amt}`,
+    finalContent.includes(`[**${amt}**](`) || finalContent.includes(`[${amt}](`)
+  );
+}
+
+check(
+  suite12,
+  "standard_50k_30yr_quote.md has dedicated clickable verification link column in rider tables",
+  quoteContent.includes("공식 약관 및 전산 검증 링크")
+);
+
+check(
+  suite12,
+  "optimal_prenatal_quote_final.md has dedicated clickable verification link column in rider tables",
+  finalContent.includes("공식 약관 및 전산 검증 링크")
+);
+
+check(
+  suite12,
+  "standard_50k_30yr_quote.md links directly to official disclosure URL",
+  quoteContent.includes("https://www.hi.co.kr/serviceAction.do?menuId=100340")
+);
+
+check(
+  suite12,
+  "optimal_prenatal_quote_final.md links directly to official disclosure URL",
+  finalContent.includes("https://www.hi.co.kr/serviceAction.do?menuId=100340")
+);
+
+check(
+  suite12,
+  "standard_50k_30yr_quote.md links directly to simulation guide anchor",
+  quoteContent.includes("direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on")
+);
+
+check(
+  suite12,
+  "optimal_prenatal_quote_final.md links directly to simulation guide anchor",
+  finalContent.includes("direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on")
+);
+
+check(
+  suite12,
+  "market_premium_tiers_2026.md contains clickable links for stage premiums",
+  marketContent.includes("[약 24,770원](") && marketContent.includes("[**월 약 42,560원**](")
+);
 
 // ------------------------------------------------------------
 // Summary Report
