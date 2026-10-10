@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "description": "2026년 태아보험 온라인 실가입 및 사전견적 분석 표본 익명화 데이터셋 (N=350)",
+    "description": "태아보험 온라인 보험료 표본이라고 설명되어 있으나 행별 원자료가 없어 검증되지 않은 레거시 데이터셋 (레코드 수 350)",
     "sample_count": 350,
-    "period": "2026-06 ~ 2026-09",
+    "period": "claimed_unverified: 2026-06 ~ 2026-09",
     "tier_breakdown": {
       "Tier 1 (가성비 권장형)": 217,
       "Tier 2 (표준 권유형)": 91,
@@ -14,7 +14,19 @@
       "Tier 2": "26.0%",
       "Tier 3": "8.0%",
       "Tier 4": "4.0%"
-    }
+    },
+    "evidence_status": "QUARANTINED_UNVERIFIED",
+    "provenance_complete": false,
+    "reviewed_on": "2026-10-10",
+    "permitted_use": "Structural/test fixture only. Do not use for market prevalence, average premium, consumer behavior, insurer comparison, or recommendations until provenance is recovered and audited.",
+    "review_notes": [
+      "No row-level source URL, archive URL, source post ID, capture timestamp, screenshot/evidence file, or evidence hash is present.",
+      "Tier counts are exactly 217/91/28/14 (62/26/8/4%).",
+      "All rows in each tier share one of only four rider-summary strings; the premium sequence has conspicuous regular/repeating patterns. These patterns do not prove fabrication, but make the asserted sample unverifiable from this repository.",
+      "Preserve as an unverified legacy artifact; do not describe as empirical or observed market data until provenance is recovered."
+    ],
+    "tier_breakdown_note": "These counts describe categories embedded in this JSON only; they are not verified empirical market counts.",
+    "data_type_note": "Each row data_type value is an unverified label from the legacy dataset, not independently verified proof of contract or quote type."
   },
   "samples": [
     {

@@ -4,14 +4,15 @@
 
 ## 먼저 읽을 결론
 
-이 저장소의 표준안은 **29세 사무직·무병력·단태아를 가정한 20년납 30세 만기 예시**입니다. 출생 전 약 4.3만 원, 출생 직후 약 6.2만 원이라는 숫자는 해당 입력값에서 나온 견적 예시이지, 모든 가입자에게 적용되는 확정 보험료가 아닙니다.
+이 저장소의 설계안은 성인 산모·사무직·단태아를 가정한 20년납 30세 만기 검토 초안입니다. 출생 전 42,560원, 출생 직후 61,870원은 이전 문서에 기록된 미검증 숫자로, 원본 견적 증빙이 없어 해당 조건에서 실제 산출됐는지 재현할 수 없습니다.
 
 판단 순서는 다음이 가장 안전합니다.
 
 1. **표준 설계안**에서 보장 우선순위와 입력 프로필을 확인합니다.
 2. **특약 매트릭스**에서 실제 가입금액·지급 조건·가입 가능 주수를 대조합니다.
 3. 병력이나 이상소견이 있으면 **인수심사 시나리오**를 참고하되, 보험사의 사전심사를 별도로 받습니다.
-4. 보험료와 계약전환은 이번 검토에서 대조한 **공식 상품 페이지·약관·청약 화면의 조건**을 기준으로 읽고, 개인 청약에서 달라지는 값만 별도로 반영합니다.
+4. 보험료 표는 최신 공식 견적 출력물로 재현되지 않은 **미검증 예시값**입니다. 일반 공시 페이지 링크만으로 개별 보험료나 모든 특약 문구가 검증되었다고 보지 않습니다.
+5. N=350 JSON은 행별 출처·증빙을 확인할 수 없어 **검토 보류(QUARANTINED_UNVERIFIED)** 상태입니다. 시장 비중이나 평균 보험료 근거로 사용하지 않습니다.
 
 ### 이 문서가 말하는 것
 
@@ -34,16 +35,16 @@
 | 2 | [`full_rider_selection_matrix.md`](full_rider_selection_matrix.md) | 담보별 가입금액과 지급 조건 |
 | 3 | [`underwriting_scenarios.md`](underwriting_scenarios.md) | 고지의무와 사전심사 준비 |
 | 4 | [`quotes/quote_30year_vs_100year.md`](quotes/quote_30year_vs_100year.md) | 만기 선택의 비용·조건 비교 |
-| 5 | [`SOURCE_MANIFEST.md`](SOURCE_MANIFEST.md) | 공식 출처, 관찰 표본, 검증 범위 |
+| 5 | [`SOURCE_MANIFEST.md`](SOURCE_MANIFEST.md) | 공식 출처의 범위, 미검증 보험료, 격리된 N=350 데이터 |
 | 6 | [`audit_quality_review.md`](audit_quality_review.md) | 문서 품질 감사와 남은 한계 |
 
 ## 표준 예시의 핵심 숫자
 
 | 항목 | 저장소의 기준 예시 | 해석 |
 | --- | ---: | --- |
-| 종합보험 | 출생 전 24,770원 / 출생 후 34,870원 | 특정 입력값의 전산 견적 예시 |
-| 태아 실손 | 출생 전 17,790원 / 출생 직후 27,000원 | 연령·성별·상품 조건에 따라 달라짐 |
-| 합산 | 출생 전 42,560원 / 출생 직후 61,870원 | 이번 검토에서 산술 대조한 표준 프로필 예시 |
+| 종합보험 | 출생 전 24,770원 / 출생 후 34,870원 | 문서에 보존된 미검증 예시값. 현행 전산 산출을 재현한 값 아님 |
+| 태아 실손 | 출생 전 17,790원 / 출생 직후 27,000원 | 문서에 보존된 미검증 예시값. 실제 보험료는 공식 최신 견적 확인 필요 |
+| 합산 | 출생 전 42,560원 / 출생 직후 61,870원 | 위 예시 숫자의 산술 합계이며 실측·현행 보험료 검증을 의미하지 않음 |
 | 만기·납입 | 30세 만기·20년납 | 100세 만기보다 항상 우월하다는 뜻은 아님 |
 
 ## 판단 기준
@@ -69,10 +70,10 @@
 
 - [`direct_quote_simulation_guide.md`](direct_quote_simulation_guide.md): 다이렉트 견적 입력 순서와 재현 시 주의점
 - [`optimal_design/optimal_prenatal_quote_final.md`](optimal_design/optimal_prenatal_quote_final.md): 표준 설계안을 한 장으로 확인하는 문서
-- [`quotes/quote_comparison_3_insurers.md`](quotes/quote_comparison_3_insurers.md): 3사 비교표. 동일 조건 여부를 먼저 확인해야 함
-- [`market_premium_tiers_2026.md`](market_premium_tiers_2026.md): N=350 익명 온라인 관찰 표본과 한계
-- [`raw_sources/`](raw_sources/): 보험사·커뮤니티·제도 자료의 요약 아카이브
-- [`audit_quality_review.md`](audit_quality_review.md): 품질 감사와 조건부 판단 목록
+- [quotes/quote_comparison_3_insurers.md](quotes/quote_comparison_3_insurers.md): 원본 증빙이 없는 3사 비교 초안. 과거 숫자와 순위는 현행 비교에 사용하지 않음
+- [`market_premium_tiers_2026.md`](market_premium_tiers_2026.md): 출처 복원 전 검토 보류 중인 N=350 데이터 공지
+- [`raw_sources/`](raw_sources/): 보험사·커뮤니티·제도 자료를 요약한 참고 노트. 원본 약관·게시글·견적 증빙이 보존된 경우와 그렇지 않은 경우를 구분해야 함
+- [`audit_quality_review.md`](audit_quality_review.md): 품질 재감사: 원자료와 견적 증빙이 필요한 항목
 - [`version_history_hi2607.md`](version_history_hi2607.md): 버전별 변경 기록
 
 ## 출처와 검증 상태
@@ -81,9 +82,11 @@
 
 ### 핵심 참고 페이지
 
-- [S1 현대해상 굿앤굿 상품 안내](https://car.hi.co.kr/service.do?m=ebcf01fc28): 30세 만기·계약전환 대상 담보·임신 주수 제한
-- [S2 현대해상 다이렉트 보험료 페이지](https://m.hi.co.kr/serviceAction.do?kw=00004F&menu=36&menuId=100222&src=text): 보험료·갱신 조건 안내
-- [S3 금융위원회 5세대 실손 안내](https://www.fsc.go.kr/no040000?cnId=3203&curPage=1): 5세대 실손의 시행일과 보장 구조
+- [S1 현대해상 굿앤굿 상품 안내](https://children.hi.co.kr/serviceAction.do?menuId=100222): Hi2607 상품 개요 및 가입 시 유의사항. 개별 지급요건은 약관 본문 확인
+- [S2 현대해상 다이렉트](https://direct.hi.co.kr): 현재 입력 조건의 견적 진입점이며, 링크 자체는 저장소의 특정 보험료를 입증하지 않음
+- [S3 금융위원회 5세대 실손 출시 보도자료](https://www.fsc.go.kr/po010101/86831): 5세대 실손의 시행일과 보장 구조
+- [S8 금융위·금감원 5세대 실손 보도자료 사본](https://kiri.or.kr/PDF/weeklytrend/20260518/trend20260518_4.pdf): 급여 및 중증/비중증 비급여별 자기부담률·한도
 - [S4 상법 제655조](https://www.law.go.kr/LSW/lsLawLinkInfo.do?chrClsCd=010202&lsJoLnkSeq=1008161137), [S5 대법원 95다25268](https://www.law.go.kr/LSW/precInfoP.do?precSeq=152771): 고지의무와 인과관계
+- [S9 대법원 2024다272941 (2025-01-09)](https://law.go.kr/LSW/precInfoP.do?mode=0&precSeq=600295): 상법 제655조 단서의 적용과 인과관계 부존재의 증명책임
 
 이 문서는 보험 가입을 대신하는 금융·의료·법률 자문이 아닙니다. 실제 청약 전에는 보험사의 최신 상품설명서, 약관, 청약서 질문표와 개별 심사 결과를 확인하세요.

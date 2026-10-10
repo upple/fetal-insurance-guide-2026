@@ -1,23 +1,23 @@
 /**
- * Automated Integrity Verification Script for fetal-insurance-guide-2026 (v2.5)
+ * Local Static Consistency Checks for fetal-insurance-guide-2026 (2026-10-10 review)
  * 
  * Verifies consistency across:
- * 1. Product version (Hi2607 across all files & unified v2.5 metadata)
+ * 1. Product-version label consistency (not live insurer validation)
  * 2. Newborn & Low Birth Weight conditions (신생아질병 1-120일 첫날부터 & 저체중아 2.5kg이하/3일이상/3일째부터)
- * 3. 5th-gen indemnity health insurance structure (급여 / 특약1 중증비급여 5천만 한도·상급종병 500만상한 / 특약2 비중증 1천만 한도·50%)
- * 4. Premium flows and mathematical precision (42,560원 -> 61,870원)
- * 5. Sample terminology & anonymized dataset integrity (N=350, 62%/26%/8%/4% breakdown)
- * 6. Legal & underwriting standards (상법 제651조의2, 제655조 단서, Scenario E 성실 고지)
+ * 3. 5th-gen indemnity structure matches cited FSC public guidance (still verify policy wording for contracts)
+ * 4. Arithmetic sanity checks for historical example values only (not premium validity)
+ * 5. Dataset structure and provenance quarantine (N=350 legacy fixture; not an empirical sample)
+ * 6. Legal and underwriting wording is cautiously qualified against cited public law/case references
  * 7. Hi2607 July 2026 New Riders (50-1, 52-1, 85-1) in Matrix
- * 8. Dynamic Cardinality Parsing & Verification (124 unique rows, 0 duplicate IDs, 18 gaps, 7 groups)
+ * 8. Dynamic parsing of the stored rider list (repository rows only; not a live calculator inventory)
  * 9. Elimination of Deterministic, Avoidance & Hyperbolic Phrasing
- * 10. Audit Quality Review (A- Rating & Failure Conditions Checklist)
- * 11. Source Citation Coverage (official pages named in reader-facing docs)
- * 12. 100% Clickable Verification for All Amounts (Zero Guessing Policy & 1:1 Links)
+ * 10. Current audit verdict and evidence limitations
+ * 11. Source-reference presence (not a validation that URLs were opened or claims verified)
+ * 12. Static link-text presence and arithmetic sanity checks (not external link/quote validation)
  */
 
 import { readFileSync, existsSync } from "fs";
-import { join } from "path";
+import { join, resolve, dirname } from "path";
 
 const rootDir = process.cwd();
 
@@ -43,21 +43,20 @@ function readFile(relPath: string): string {
 }
 
 console.log("============================================================");
-console.log("🚀 Starting fetal-insurance-guide-2026 Automated Integrity Test (v2.5)");
+console.log("Starting local static consistency checks (no external insurer/source validation).");
 console.log("============================================================\n");
 
 // ------------------------------------------------------------
-// Suite 1: Product Version (Hi2607)
+// Suite 1: Product Version Label Consistency (static text only)
 // ------------------------------------------------------------
-const suite1 = "Suite 1: Product Version (Hi2607)";
+const suite1 = "Suite 1: Product Version Label Consistency (static text only)";
 const targetFiles = [
   "README.md",
   "full_rider_selection_matrix.md",
   "standard_50k_30yr_quote.md",
   "optimal_design/optimal_prenatal_quote_final.md",
   "underwriting_scenarios.md",
-  "version_history_hi2607.md",
-  "audit_quality_review.md"
+  "version_history_hi2607.md"
 ];
 
 for (const file of targetFiles) {
@@ -78,7 +77,7 @@ const auditContent = readFile("audit_quality_review.md");
 
 check(suite1, "standard_50k_30yr_quote.md has unified v2.5 metadata", quoteContent.includes("v2.5"));
 check(suite1, "optimal_prenatal_quote_final.md has unified v2.5 metadata", finalContent.includes("v2.5"));
-check(suite1, "audit_quality_review.md has unified v2.5 metadata", auditContent.includes("v2.5"));
+check(suite1, "audit_quality_review.md is dated for the current re-audit", auditContent.includes("2026-10-10") && auditContent.includes("검토 보류"));
 check(suite1, "full_rider_selection_matrix.md specifies Group 3 has 13종", matrixContent.includes("제3군: 질병 입원일당 담보 (13종)"));
 
 // ------------------------------------------------------------
@@ -132,8 +131,8 @@ check(
 const policyContent = readFile("raw_sources/02_hyundai_good_and_good_policy_2026.md");
 check(
   suite2,
-  "02_hyundai_good_and_good_policy_2026.md 저체중아입원 condition is 2.5kg 이하 / 3일째부터",
-  policyContent.includes("2.5kg 이하") && policyContent.includes("3일째부터")
+  "02_hyundai_good_and_good_policy_2026.md explicitly flags low-birth-weight terms for primary-source review",
+  policyContent.includes("증거 범위 주의") && policyContent.includes("현행 특약 원문 대조 필요")
 );
 
 // Verify that outdated "4일째" and "2.5kg 미만" are strictly zero across all active policy/guide files
@@ -187,13 +186,13 @@ check(
 check(
   suite3,
   "5th gen doc specifies 500만 원 out-of-pocket ceiling scope to 상급·종합병원 입원",
-  indemnityContent.includes("상급·종합병원 입원") && indemnityContent.includes("500만 원")
+  indemnityContent.includes("상급종합·종합병원 입원") && indemnityContent.includes("500만 원")
 );
 
 check(
   suite3,
-  "audit_quality_review.md specifies 500만 원 ceiling scope to 상급·종합병원 입원",
-  auditContent.includes("상급·종합병원 입원") && auditContent.includes("500만 원")
+  "audit_quality_review.md links the official FSC source for fifth-generation indemnity",
+  auditContent.includes("www.fsc.go.kr/po010101/86831")
 );
 
 check(
@@ -205,13 +204,13 @@ check(
 check(
   suite3,
   "5th gen doc clearly explains exclusion of manual therapy in 특약 2",
-  indemnityContent.includes("도수치료·증식치료·체외충격파") && indemnityContent.includes("원칙적으로 제외")
+  indemnityContent.includes("근골격계 물리치료·체외충격파·비급여 주사제") && indemnityContent.includes("일부 항목은 보장에서 제외")
 );
 
 check(
   suite3,
-  "5th gen doc clarifies that old 3대 비급여 limits are not standalone in 5th gen",
-  indemnityContent.includes("3대 비급여 특약")
+  "5th gen doc differentiates updated coverage from prior product structure",
+  indemnityContent.includes("4세대의 구조를 그대로 이름만 바꾼 상품이 아닙니다")
 );
 
 // ------------------------------------------------------------
@@ -237,11 +236,6 @@ for (const p of expectedPremiums) {
   );
   check(
     suite4,
-    `market_premium_tiers_2026.md matches ${p.label} (${p.val})`,
-    marketContent.includes(p.val)
-  );
-  check(
-    suite4,
     `optimal_prenatal_quote_final.md matches ${p.label} (${p.val})`,
     finalContent.includes(p.val)
   );
@@ -250,24 +244,24 @@ for (const p of expectedPremiums) {
 // ------------------------------------------------------------
 // Suite 5: Sample Terminology & Descriptive Consistency
 // ------------------------------------------------------------
-const suite5 = "Suite 5: Sample Terminology (N=350)";
+const suite5 = "Suite 5: Unverified Sample Quarantine (N=350 legacy fixture)";
 
 check(
   suite5,
-  "market_premium_tiers_2026.md uses unified sample phrasing",
-  marketContent.includes("익명 관찰 표본") && marketContent.includes("N = 350")
+  "market_premium_tiers_2026.md explicitly quarantines unverifiable dataset",
+  marketContent.includes("검토 보류") && marketContent.includes("QUARANTINED_UNVERIFIED")
 );
 
 check(
   suite5,
-  "standard_50k_30yr_quote.md uses unified sample phrasing",
-  quoteContent.includes("익명 온라인 표본(N=350)") && quoteContent.includes("대표성 있는 시장 선호도")
+  "standard_50k_30yr_quote.md warns against use of unverified market data",
+  quoteContent.includes("N=350 데이터는 행별 출처와 증빙이 없어 QUARANTINED_UNVERIFIED 상태입니다") && quoteContent.includes("구간 비중이나 시장 선호도 근거로 사용하지 않습니다")
 );
 
 check(
   suite5,
-  "README.md uses unified sample phrasing",
-  readFile("README.md").includes("N=350 익명 온라인 관찰 표본") && readFile("README.md").includes("한계")
+  "README.md warns N=350 dataset is quarantined",
+  readFile("README.md").includes("QUARANTINED_UNVERIFIED") && readFile("README.md").includes("시장 비중이나 평균 보험료 근거로 사용하지 않습니다")
 );
 
 // Anonymized raw dataset verification
@@ -282,11 +276,38 @@ check(
 
 check(
   suite5,
-  "market_sample_350_anonymized.json metadata tier breakdown matches (217, 91, 28, 14)",
-  rawDataset.metadata.tier_breakdown["Tier 1 (가성비 권장형)"] === 217 &&
-  rawDataset.metadata.tier_breakdown["Tier 2 (표준 권유형)"] === 91 &&
-  rawDataset.metadata.tier_breakdown["Tier 3 (초실속형)"] === 28 &&
-  rawDataset.metadata.tier_breakdown["Tier 4 (프리미엄형)"] === 14
+  "market_sample_350_anonymized.json is explicitly quarantined pending provenance",
+  rawDataset.metadata.evidence_status === "QUARANTINED_UNVERIFIED" &&
+  rawDataset.metadata.provenance_complete === false &&
+  rawDataset.metadata.permitted_use.includes("Structural/test fixture only")
+);
+
+check(
+  suite5,
+  "legacy sample description explicitly says source rows are unverified",
+  rawDataset.metadata.description.includes("검증되지 않은 레거시 데이터셋")
+);
+
+check(
+  suite5,
+  "legacy sample date range is explicitly marked as a claim rather than verified data",
+  String(rawDataset.metadata.period).startsWith("claimed_unverified:")
+);
+
+check(
+  suite5,
+  "legacy sample IDs are unique within the JSON fixture",
+  Array.isArray(rawDataset.samples) &&
+  new Set(rawDataset.samples.map((row: { sample_id: string }) => row.sample_id)).size === rawDataset.samples.length
+);
+
+check(
+  suite5,
+  "market sample provenance template exists and includes evidence/hash and duplicate tracking fields",
+  existsSync(join(rootDir, "raw_sources/market_sample_provenance_template.csv")) &&
+  readFile("raw_sources/market_sample_provenance_template.csv").includes("source_url") &&
+  readFile("raw_sources/market_sample_provenance_template.csv").includes("evidence_sha256") &&
+  readFile("raw_sources/market_sample_provenance_template.csv").includes("duplicate_cluster_id")
 );
 
 // ------------------------------------------------------------
@@ -505,7 +526,10 @@ check(
 
 const allPublicDocs = [
   ...activeGuideFiles,
-  "SOURCE_MANIFEST.md"
+  "SOURCE_MANIFEST.md",
+  "audit_quality_review.md",
+  "raw_sources/03_kb_geumjok_plus_analysis_2026.md",
+  "raw_sources/04_db_ilove_health_analysis_2026.md"
 ];
 for (const file of allPublicDocs) {
   const c = readFile(file);
@@ -533,25 +557,39 @@ const suite10 = "Suite 10: Audit Quality Review (limitations & Failure Condition
 
 check(
   suite10,
-  "audit_quality_review.md states conditional suitability and limitations",
-  auditContent.includes("조건부 적합") && auditContent.includes("공식 안내와 이중 대조")
+  "audit_quality_review.md states review-hold verdict and limitations",
+  auditContent.includes("검토 보류") && auditContent.includes("원본 견적 화면") && auditContent.includes("재현")
 );
 
 check(
   suite10,
-  "audit_quality_review.md defines 3 Audit Failure Conditions",
-  auditContent.includes("감사 부적합/불일치 판정 조건 (Audit Failure Conditions)") &&
-  auditContent.includes("산모 병력·검사 이력 보유 시") &&
-  auditContent.includes("30세 만기 계약전환의 범위를 확인하지 않은 경우") &&
-  auditContent.includes("5세대 실손의 비급여 보장 축소 한계")
+  "audit_quality_review.md records source, quote, sample, and test limitations",
+  auditContent.includes("N=350") &&
+  auditContent.includes("QUARANTINED_UNVERIFIED") &&
+  auditContent.includes("외부 링크를 열거나") &&
+  auditContent.includes("개별 견적 증빙")
+);
+
+check(
+  suite10,
+  "three-insurer comparison explicitly blocks use of unverified rankings/prices",
+  readFile("quotes/quote_comparison_3_insurers.md").includes("보험료·순위·우위 주장 사용 금지") &&
+  readFile("quotes/quote_comparison_3_insurers.md").includes("미검증 레거시 주장")
+);
+
+check(
+  suite10,
+  "underwriting scenarios states it is not an approval-probability estimate",
+  underContent.includes("승인 가능성 예측표가 아님") &&
+  underContent.includes("보험사에 서면 사전심사를 요청")
 );
 
 // ------------------------------------------------------------
-// Suite 11: Source Citation Coverage
+// Suite 11: Source Reference Presence (not source validation)
 // ------------------------------------------------------------
-const suite11 = "Suite 11: Source Citation Coverage";
+const suite11 = "Suite 11: Source Reference Presence (not source validation)";
 const sourceManifest = readFile("SOURCE_MANIFEST.md");
-for (const id of ["S1", "S2", "S3", "S4", "S5", "S6", "S7"]) {
+for (const id of ["S1", "S2", "S3", "S4", "S5", "S6", "S7", "S8", "S9"]) {
   check(suite11, `SOURCE_MANIFEST.md defines ${id}`, sourceManifest.includes(`| ${id} |`));
 }
 
@@ -573,25 +611,26 @@ for (const file of [
   check(
     suite11,
     `${file} names a reader-facing source section or manifest`,
-    c.includes("SOURCE_MANIFEST.md") || c.includes("참고 페이지") || c.includes("공식 웹 출처") || c.includes("검증 웹 출처")
+    c.includes("SOURCE_MANIFEST.md") || c.includes("참고 페이지") || c.includes("참고 공식 웹 페이지") || c.includes("참고 웹 링크") || c.includes("공식 웹 출처") || c.includes("검증 웹 출처") || c.includes("증거 범위 주의")
   );
 }
 
 for (const url of [
-  "https://car.hi.co.kr/service.do?m=ebcf01fc28",
-  "https://m.hi.co.kr/serviceAction.do?kw=00004F",
-  "https://www.fsc.go.kr/no040000?cnId=3203",
+  "https://children.hi.co.kr/serviceAction.do?menuId=100222",
+  "https://www.fsc.go.kr/po010101/86831",
   "https://www.law.go.kr/LSW/lsLawLinkInfo.do?chrClsCd=010202&lsJoLnkSeq=1008161137",
   "https://www.law.go.kr/LSW/precInfoP.do?precSeq=152771",
-  "https://www.hi.co.kr/serviceAction.do?menuId=100932"
+  "https://www.hi.co.kr/serviceAction.do?menuId=100932",
+  "https://kiri.or.kr/PDF/weeklytrend/20260518/trend20260518_4.pdf",
+  "https://law.go.kr/LSW/precInfoP.do?mode=0&precSeq=600295"
 ]) {
   check(suite11, `SOURCE_MANIFEST.md includes ${url}`, sourceManifest.includes(url));
 }
 
 // ------------------------------------------------------------
-// Suite 12: 100% Clickable Verification & Math Precision (Zero Guessing Policy)
+// Suite 12: Static Link-Text Presence & Arithmetic Sanity (No External Validation)
 // ------------------------------------------------------------
-const suite12 = "Suite 12: 100% Clickable Verification & Math Precision";
+const suite12 = "Suite 12: Static Link-Text Presence & Arithmetic Sanity (No External Validation)";
 
 const stagePremiums = [
   "24,770원",
@@ -630,14 +669,14 @@ check(
 
 check(
   suite12,
-  "standard_50k_30yr_quote.md has dedicated clickable verification link column in rider tables",
-  quoteContent.includes("공식 약관 및 전산 검증 근거")
+  "standard_50k_30yr_quote.md has a source-reference column (not a click test)",
+  quoteContent.includes("공식 참고 경로 (조항별 대조 필요)")
 );
 
 check(
   suite12,
-  "optimal_prenatal_quote_final.md has dedicated clickable verification link column in rider tables",
-  finalContent.includes("공식 약관 및 전산 검증 근거")
+  "optimal_prenatal_quote_final.md has a source-reference column (not a click test)",
+  finalContent.includes("공식 참고 경로 (조항별 대조 필요)")
 );
 
 // Rider group subtotals verification
@@ -684,25 +723,41 @@ check(
 
 check(
   suite12,
-  "standard_50k_30yr_quote.md links directly to official disclosure URL (menuId=100932)",
+  "Prenatal premium components add arithmetically to 42,560원",
+  24770 + 17790 === 42560
+);
+check(
+  suite12,
+  "Postnatal example components add arithmetically to 61,870원",
+  34870 + 27000 === 61870
+);
+check(
+  suite12,
+  "Illustrative subtraction after C-group expiry is 28,790원 (not a new quote)",
+  34870 - 6080 === 28790
+);
+
+check(
+  suite12,
+  "standard_50k_30yr_quote.md contains official disclosure reference URL (not externally tested)",
   quoteContent.includes("https://www.hi.co.kr/serviceAction.do?menuId=100932")
 );
 
 check(
   suite12,
-  "optimal_prenatal_quote_final.md links directly to official disclosure URL (menuId=100932)",
+  "optimal_prenatal_quote_final.md contains official disclosure reference URL (not externally tested)",
   finalContent.includes("https://www.hi.co.kr/serviceAction.do?menuId=100932")
 );
 
 check(
   suite12,
-  "standard_50k_30yr_quote.md links directly to simulation guide anchor",
+  "standard_50k_30yr_quote.md contains simulation guide anchor text",
   quoteContent.includes("direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on")
 );
 
 check(
   suite12,
-  "optimal_prenatal_quote_final.md links directly to simulation guide anchor",
+  "optimal_prenatal_quote_final.md contains simulation guide anchor text",
   finalContent.includes("direct_quote_simulation_guide.md#step-3-필수-보장-가입금액-입력-on")
 );
 
@@ -724,13 +779,13 @@ check(
 check(
   suite12,
   "standard_50k_30yr_quote.md top notice declares official facts vs dynamic quote separation",
-  quoteContent.includes("투명성 원칙: 100% 공식 검증 팩트와 개인별 동적 모의 견적의 엄격한 분리 고지")
+  quoteContent.includes("투명성 원칙: 공식 공개자료와 미검증 개별 설계 예시의 구분")
 );
 
 check(
   suite12,
   "optimal_prenatal_quote_final.md top notice declares official facts vs dynamic quote separation",
-  finalContent.includes("투명성 원칙: 100% 공식 검증 팩트와 개인별 동적 모의 견적의 엄격한 분리 고지")
+  finalContent.includes("투명성 원칙: 공식 공개자료와 미검증 개별 설계 예시의 구분")
 );
 
 // Obsolete URLs strictly absent across all public docs
@@ -746,6 +801,40 @@ for (const file of allPublicDocs) {
     `${file} has zero occurrences of dead law link 1032336231`,
     !c.includes("1032336231")
   );
+}
+
+// ------------------------------------------------------------
+// Suite 13: Relative Markdown Target Existence (offline path check)
+// This checks the target file exists, not its fragment anchor or the external page.
+// ------------------------------------------------------------
+const suite13 = "Suite 13: Relative Markdown Target Existence (offline path check)";
+const markdownInventory = [
+  "README.md", "SOURCE_MANIFEST.md", "audit_quality_review.md", "direct_quote_simulation_guide.md",
+  "full_rider_selection_matrix.md", "market_premium_tiers_2026.md", "standard_50k_30yr_quote.md",
+  "underwriting_scenarios.md", "version_history_hi2607.md",
+  "optimal_design/optimal_prenatal_quote_final.md", "quotes/quote_30year_vs_100year.md",
+  "quotes/quote_comparison_3_insurers.md", "raw_sources/01_dcinside_insurance_gallery_guide.md",
+  "raw_sources/02_hyundai_good_and_good_policy_2026.md", "raw_sources/03_kb_geumjok_plus_analysis_2026.md",
+  "raw_sources/04_db_ilove_health_analysis_2026.md", "raw_sources/05_indemnity_health_insurance_5th_gen_2026.md"
+];
+const fenceMarker = String.fromCharCode(96).repeat(3);
+const fencePattern = new RegExp(fenceMarker + "[\\s\\S]*?" + fenceMarker, "g");
+for (const sourceFile of markdownInventory) {
+  const body = readFile(sourceFile).replace(fencePattern, "");
+  const linkPattern = /(?<!!)\[[^\]]*\]\(([^)]+)\)/g;
+  for (const match of body.matchAll(linkPattern)) {
+    const rawTarget = match[1].trim().split(/\s+/)[0].replace(/^<|>$/g, "");
+    if (!rawTarget || /^(https?:|mailto:|tel:|data:|#)/i.test(rawTarget)) continue;
+    let localPart = rawTarget.split("#")[0].split("?")[0];
+    try { localPart = decodeURIComponent(localPart); } catch { /* Preserve undecodable path and fail it below. */ }
+    if (!localPart) continue;
+    const resolvedTarget = resolve(rootDir, dirname(sourceFile), localPart);
+    check(
+      suite13,
+      sourceFile + " -> " + rawTarget + " target exists",
+      existsSync(resolvedTarget)
+    );
+  }
 }
 
 // ------------------------------------------------------------
@@ -774,6 +863,6 @@ if (!allPassed) {
   console.error("\n❌ Integrity Verification Failed! Please fix the errors above.");
   process.exit(1);
 } else {
-  console.log("\n✨ All dynamic integrity checks passed successfully (100% verified)!");
+  console.log("\nAll local static consistency checks passed. This does NOT validate external URLs, policy clauses, source provenance, or insurer quote outputs.");
   process.exit(0);
 }
